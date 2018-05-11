@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>手机拍照选择</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+          *{
+            margin: 0;
+            padding: 0;
+          }
+          body,html{
+            width: 100%;
+            height: 100%;
+            background-color: #f1f1f1;
+          }
+          ul li {
+            list-style-type: none;
+          }
+
+          .select{
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            background-color: #fff;
+          }
+          .select .img{
+            height: 48px;
+            width: 100%;
+            line-height: 48px;
+            text-align: center;
+            color: #000;
+            font-size: 16px;
+          }
+          .select .se{
+            border-bottom: 1px solid #e1e1e1;
+          }
+          .select .mi{
+            border-bottom: 3px solid #e1e1e1;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="select">
+          <div class="img se">拍照</div>
+          <div class="img mi">从手机相册选择</div>
+          <div class="img" onclick="api.closeFrame()">取消</div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+      };
+  </script>
+  </html>
