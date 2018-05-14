@@ -64,17 +64,15 @@
 
           /*ul菜单*/
           .inform ul{
-            padding-top: 78px;
+            padding-top: 70px;
           }
           .inform ul li{
             width: 100%;
-            height: 60px;
+            height: 55px;
             display: flex;
             align-items: center;
           }
-         .inform li{
-           padding-left: 4px;
-         }
+
           .inform ul li span{
             width: 32px;
             height: 32px;
@@ -88,15 +86,14 @@
             height: 55px;
             float: right;
             border-bottom: 1px solid #e1e1e1;
-            margin-left: 4px;
           }
 
           .inform ul li .time{
             font-size: 10px;
             color: #bebebe;
             float: right;
-            margin-top: -48px;
-            margin-right: 18px;
+            margin-top: -42px;
+            margin-right: 10px;
             position: relative;
           }
           .inform ul li .time .num{
@@ -112,18 +109,17 @@
             color: #fff;
           }
           .inform ul li .title{
-            height: 40%;
-            font-size: 15px;
+            height: 50%;
+            font-size: 14px;
             color: #111;
-            line-height: 34px;
+            line-height: 42px;
           }
 
           .inform ul li .text{
             height: 50%;
-            font-size: 11px;
+            font-size: 10px;
             color: #6c6c6c;
-            line-height: 36px;
-            margin-bottom: 5px;
+            line-height: 24px;
           }
           /*ul菜单 edn*/
       </style>
@@ -141,7 +137,7 @@
         <li>
           <i class="iconfont" style="font-size:16px;" >&#xe630;</i>
           <!-- <span style="background:url('../images/inform/device_sharing.png') no-repeat"></span> -->
-          <div class="main" style="margin-left:9px;">
+          <div class="main" style="margin-left:5px;">
             <div class="title">设备通知</div>
             <div class="text">kevin已接受共享的设备</div>
             <div class="time">04-11 <div class="num">1</div></div>
@@ -183,7 +179,7 @@
         var sys = '';
         if(userdata){
           api.ajax({
-              url: 'http://www.juzzn.com/getNotice.php',
+              url: 'http://www.lxzntech.com/getNotice.php',
               method: 'post',
               data: {
                   values: {

@@ -114,7 +114,7 @@
            border: 1px solid #f1f1f1;
          }
           .nickname{
-           font-size:15px;
+           font-size:13px;
            color:#7b7b7b;
            padding-top: 8px;
          }
@@ -235,14 +235,14 @@
   </div>
         <div class="item_content">
             <div class="phone">
-                <a href="javascript:;" onclick="OpenDeviceShare()" >
+                <a href="javascript:;" onclick="OpenDeviceShare()" style="padding:15px;">
                   <i class="iconfonta" style="font-size:15px;margin-left:2px;">&#xe630;</i>
                     <div>
                         <span class="title">共享设备</span>
                     </div>
                     <span class="arrow"></span>
                 </a>
-                <a href="javascript:;" id="bindingphonenum" onclick="OpenBindingCellPhone()">
+                <a href="javascript:;" id="bindingphonenum" onclick="OpenBindingCellPhone()" style="padding:14px;>
                   <i class="iconfonta" style="font-size:18px;">&#xe642;</i>
                     <div>
                         <span class="title">手机号码</span>
@@ -276,14 +276,14 @@
             </div>
 
             <div class="msg">
-                <a href="javascript:;" onclick="OpenSuggestionFeedback()">
+                <a href="javascript:;" onclick="OpenSuggestionFeedback()" style="padding:14px;" >
                   <i class="iconfonta" style="font-size:18px;">&#xe609;</i>
                     <div>
                         <span class="title">意见反馈</span>
                     </div>
                     <span class="arrow"></span>
                 </a>
-                <a href="javascript:;" onclick="OpAgreement()">
+                <a href="javascript:;" onclick="OpAgreement()" style="padding:14px;">
                   <i class="iconfonta" style="font-size:18px;">&#xe677;</i>
                     <div>
                         <span class="title">用户协议</span>
@@ -326,7 +326,7 @@ function ontimebush(){
   userdata = $api.getStorage('userdata');
   if(userdata){
     api.ajax({
-        url: 'http://www.juzzn.com/getNotice.php',
+        url: 'http://www.lxzntech.com/getNotice.php',
         method: 'post',
         data: {
             values: {
@@ -354,7 +354,7 @@ function VueUser(){
   var bindingphonenum = '';
   if(userdata){
     api.ajax({
-        url: 'http://www.juzzn.com/myCenter.php',
+        url: 'http://www.lxzntech.com/myCenter.php',
         method: 'post',
         data:{
           values:{

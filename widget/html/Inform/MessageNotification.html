@@ -58,11 +58,11 @@
 
           /*ul菜单*/
           .inform ul{
-            padding-top: 78px;
+            padding-top: 70px;
           }
           .inform ul li{
             width: 100%;
-            height: 60px;
+            height: 54px;
             display: flex;
             align-items: center;
 
@@ -80,18 +80,19 @@
 
           .inform ul li .main{
             width: 100%;
-            height: 55px;
+            height: 44px;
             float: right;
             border-bottom: 1px solid #e1e1e1;
-            margin-left: 8px;
+            font-family: "iconfont" !important;
+            margin-left: 6px;
           }
 
           .inform ul li .time{
-            font-size: 10px;
-            color: #bebebe;
+            font-size: 9px;
+            color: #808080;
             float: right;
-            margin-top: -48px;
-            margin-right: 18px;
+            margin-top: -36px;
+            margin-right: 10px;
             position: relative;
           }
           .inform ul li .time .num{
@@ -107,25 +108,24 @@
             color: #fff;
           }
           .inform ul li .title{
-            height: 40%;
-            font-size: 15px;
+            height: 50%;
+            font-size: 14px;
             color: #111;
-            line-height: 34px;
+            line-height: 28px;
           }
 
           .inform ul li .text{
             height: 50%;
             font-size: 11px;
-            color: #6c6c6c;
-            line-height: 36px;
-            margin-bottom: 5px;
+            color: #7c7c7c;
+            line-height: 20px;
           }
           .iconfont{
             font-family: "iconfont" !important;
             font-style: normal;
             font-size: 22px;
             color: #000;
-            padding: 5px;
+            margin-left: 6px;
           }
           /*ul菜单 edn*/
       </style>
@@ -184,7 +184,7 @@
       var friinfo = '';
       if(userdata){
         api.ajax({
-            url: 'http://www.juzzn.com/getNotice.php',
+            url: 'http://www.lxzntech.com/getNotice.php',
             method: 'post',
             data: {
                 values: {

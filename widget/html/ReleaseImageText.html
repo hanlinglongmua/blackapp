@@ -220,7 +220,7 @@
     var title = $api.val($api.byId('titletext'));
     var wysiwyg = $api.html($api.byId('wysiwyg'));
     api.ajax({
-        url: 'http://www.juzzn.com/post.php?type=article',
+        url: 'http://www.lxzntech.com/post.php?type=article',
         method: 'post',
         data: {
             values: {
@@ -229,7 +229,8 @@
         }
     },function(ret, err){
         if (ret.status == 1) {
-            alert( JSON.stringify( ret ) );
+            alert('发布成功');
+            api.closeWin();
         } else {
             alert( JSON.stringify( err ) );
         }
@@ -299,7 +300,7 @@
               }, function(ret) {
                     var path = ret.list[0]['path'];
                     api.ajax({
-                        url: 'http://www.juzzn.com/post.php?type=file',
+                        url: 'http://www.lxzntech.com/post.php?type=file',
                         method: 'post',
                         data: {
                             files: {
@@ -329,7 +330,7 @@
             }, function(ret, err){
                 if(ret){
                      api.ajax({
-                         url: 'http://www.juzzn.com/post.php?type=file',
+                         url: 'http://www.lxzntech.com/post.php?type=file',
                          method: 'post',
                          data: {
                              files: {
@@ -367,7 +368,7 @@
         if(ret.duration>0){
           if(ret.duration<=10){
             api.ajax({
-                url: 'http://www.juzzn.com/post.php?type=file',
+                url: 'http://www.lxzntech.com/post.php?type=file',
                 method: 'post',
                 data: {
                     files: {

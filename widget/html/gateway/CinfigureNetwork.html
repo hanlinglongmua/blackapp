@@ -119,7 +119,7 @@
         <!-- header begin -->
         <div class="header">
             <div class="top">
-                <div class="sect left"><i></i></div>
+                <div class="sect left"><i onclick="api.closeWin()"></i></div>
                 <div class="sect fo">配置网络</div>
             </div>
         </div>
@@ -128,14 +128,14 @@
         <div class="item_content">
             <div class="mine">
 
-                <a href="javascript:;">
+                <a href="javascript:;" onclick="openGateAdress()">
                     <div id="turename">
                         <span class="title">以太网<span class="link">已连接</span></span>
                     </div>
                     <span class="arrow"></span>
                 </a>
 
-                <a href="javascript:;">
+                <a href="javascript:;" onclick="openConfigureWifi()">
                     <div id="turename">
                         <span class="title">wifi<span class="notlink">未连接</span></span>
                     </div>
@@ -158,6 +158,26 @@
     apiready = function() {
 
     };
+    function openGateAdress(){
+      api.openWin({
+          name: 'GateAdress',
+          url: 'GateAdress.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+    }
+    function openConfigureWifi(){
+      api.openWin({
+          name: 'ConfigureWifi',
+          url: 'ConfigureWifi.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+    }
 </script>
 
 </html>

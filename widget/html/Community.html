@@ -44,13 +44,14 @@
       float: left;
       width: 33.33%;
       text-align: center;
-      color: #808080;
+      color: #5f5d5d;
 
     }
     span>ul>li.hover{
-      color:#242424;
+      color:#000;
       font-style:normal;
       font-weight: 600;
+      font-size: 17px;
       /*border-bottom: 2px solid #000;*/
     }
     section{
@@ -354,7 +355,7 @@
         //下拉刷新
         api.setRefreshHeaderInfo({
             loadingImg: 'widget://image/refresh.png',
-            bgColor: '#fff',
+            bgColor: '#f1f1f1',
             textColor: '#000',
             textDown: '拉我试试',
             textUp: '松开刷新...',
@@ -393,7 +394,7 @@
         community.num = num;
       }
       api.ajax({
-          url:'http://www.juzzn.com/discuss.php',
+          url:'http://www.lxzntech.com/discuss.php',
           method:'POST',
           cache:false,
           data:{
@@ -524,7 +525,7 @@
       Toast('请登录再进行操作')
     }
     api.ajax({
-        url: 'http://www.juzzn.com/action.php?action=follow',
+        url: 'http://www.lxzntech.com/action.php?action=follow',
         method: 'post',
         data: {
             values: followdatas
@@ -551,7 +552,7 @@
       Toast('请登录再进行操作')
     }
     api.ajax({
-        url: 'http://www.juzzn.com/actionCancel.php?action=follow',
+        url: 'http://www.lxzntech.com/actionCancel.php?action=follow',
         method: 'post',
         data: {
             values: followdatas
@@ -578,7 +579,7 @@
       Toast('请登录再进行操作')
     }
     api.ajax({
-        url: 'http://www.juzzn.com/action.php?action=like',
+        url: 'http://www.lxzntech.com/action.php?action=like',
         method: 'post',
         data: {
             values: likeDatas
