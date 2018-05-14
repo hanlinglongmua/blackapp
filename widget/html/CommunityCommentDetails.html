@@ -347,7 +347,7 @@
             Toast('请输入你要评论的内容',2000)
           }else {
             api.ajax({
-              url: 'http://www.juzzn.com/comment.php',
+              url: 'http://www.lxzntech.com/comment.php',
               method: 'post',
               data: {
                     values:criticismData
@@ -373,7 +373,7 @@
       pageParampid = api.pageParam.pid;
       pageParamtid =api.pageParam.tid;
       api.ajax({
-          url: 'http://www.juzzn.com/discDetail.php',
+          url: 'http://www.lxzntech.com/discDetail.php',
           method: 'post',
           data: {
               values: {
@@ -463,7 +463,7 @@
     //回复评论的点赞
     function postlike(pid){
       api.ajax({
-          url: 'http://www.juzzn.com/postLike.php',
+          url: 'http://www.lxzntech.com/postLike.php',
           method: 'post',
           data: {
               values: {

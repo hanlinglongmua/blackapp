@@ -20,7 +20,7 @@
         .iconfonta{
             font-family: "iconfont" !important;
             font-size: 18px;
-            color: #111;
+            color: #e8e8e8;
             position: absolute;
             top: 0;
             right: 38px;
@@ -35,7 +35,7 @@
 
         }
 
-/*我的头像是扁的*/
+
         .iconfonta {
           width: 18px;
           height: 18px;
@@ -47,7 +47,6 @@
         html,
         body {
             height: 100%;
-            width: 100%;
         }
 
         ul,
@@ -82,7 +81,7 @@
             text-align: center;
             position: relative;
             z-index: 9;
-            background-color: #f2f2f2;
+            background-color: #343434;
         }
 
         .header.myself,
@@ -110,13 +109,13 @@
           border-left:0px solid #d5d5d5;
           border-right:1px solid #d5d5d5;
         }*/
-        .index .discov>a{
+        .index .discov a{
           font-size: 18px;
-          color: #242424;
+          color: #a5a5a5;
           width: 38%;
         }
-        .index .discov>a.hover{
-          color:#242424;
+        .index .discov a.hover{
+          color:#fff;
           height: 36px;
           font-weight:600;
         }
@@ -148,14 +147,15 @@
         footer ul {
             width: 100%;
             height: 100%;
-            background: #e5e5e5;
+            background: #fdfdfd;
+            border-top: 1px solid #efefef;
         }
 
         footer ul li {
             width: 33.333%;
             height: 100%;
             float: left;
-            background: #e5e5e5;
+            background: #fdfdfd;
         }
 
         footer ul li span {
@@ -188,30 +188,38 @@
             position: relative;
             margin: 0 auto;
             border-radius: 50%;
-            background: url('images/index/mained.png') no-repeat center center;
-            background-color: #000;
-            -webkit-background-size: 180% 180%;
-            background-size: 180% 180%;
             width: 50px;
             height: 50px;
-
+            /*background: #666;*/
+            font-family: "iconfont" !important;
+            font-size: 50px;
+            line-height: 50px;
+            color:#1d1d1d;
         }
-
-       footer ul li div.footerBg.one {
-            background: url('images/index/indexed.png') no-repeat center center;
-            background-color: none;
-            -webkit-background-size: 200% 200%;
-            background-size: 200% 200%;
-
+        footer ul li div.footerBg.one {
+            font-family: "iconfont" !important;
+            font-size: 26px;
+            line-height: 38px;
+            color:#1d1d1d;
         }
-
         footer ul li div.footerBg.three {
-            background: url('images/index/mined.png') no-repeat center center;
-            background-color: none;
-            -webkit-background-size: 200% 200%;
-            background-size: 200% 200%;
+            font-family: "iconfont" !important;
+            font-size: 28px;
+            line-height: 39px;
+            color:#1d1d1d;
         }
-
+        .bottomIndex{
+          color:#000;
+          line-height: 10px;
+        }
+        .bottomMy{
+          color: #000;
+          line-height: 10px;
+        }
+        /*.bottomIndex.current{
+          color:#000;
+          font-weight:bold;
+        }*/
         .flex-1 {
             -webkit-box-flex: 1;
             -webkit-flex: 1;
@@ -233,7 +241,7 @@
         <div class="discov">
             <a style="margin-right:-5px;" class="menu hover" onclick="fnSetNavMenuIndex(0)">发现</a>
             <i></i>
-            <a class="menu" onclick="fnSetNavMenuIndex(1)" style="#242424;">社区</a>
+            <a class="menu" onclick="fnSetNavMenuIndex(1)">社区</a>
         </div>
         <div class="serchedit current" id="serchedit current">
             <i onclick="openSearch()" class="iconfont">&#xe612;</i>
@@ -249,49 +257,34 @@
     <section class="flex-1">
     </section>
     <footer id="footer">
-        <ul>
-            <li onclick="clickRandomSwiBtn1()" class="footbook">
-                <div class="footerBg one current">
-              <i class="iconfont"  style="display:block">&#xe60c;</i>
+        <ul id="Sfooter">
+            <li onclick="clickRandomSwiBtn1()" class="footbottom">
+                <div class="footerBg one">
+                    &#xe621;
                 </div>
-                <div>首页</div>
+                <div class="bottomIndex">首页</div>
             </li>
-            <li onclick="clickRandomSwiBtn2()">
-                <div class="footerBg big two current">
+            <li onclick="clickRandomSwiBtn2()" class="footbottom">
+                <div class="footerBg big two">
+                    &#xe618;
                 </div>
             </li>
-            <li onclick="clickRandomSwiBtn3()">
-
-                <div class="footerBg three current">
-
+            <li onclick="clickRandomSwiBtn3()" class="footbottom">
+                <div class="footerBg three">
+                    &#xe61e;
                 </div>
-                <div>我的</div>
+                <div class="bottomMy">我的</div>
             </li>
         </ul>
     </footer>
 </body>
 <script type="text/javascript" src="script/api.js"></script>
 <script type="text/javascript">
-/*// 先获取元素
-var footbookLi = document.querySelector('.footbook')
-var notselecte = document.querySelector('i')
-var selected = document.querySelector('img')
-// 绑定点击事件
-footbookLi.onclick = function () {
-    // 利用display属性去切换  当未选中状态显示时
-    if (notselecte.style.display == 'block') {
-        notselecte.style.display = 'none'
-        selected.style.display = 'block'
-    } else {
-        notselecte.style.display = 'block'
-        selected.style.display = 'none'
-    }
-}*/
     apiready = function() {
         //状态栏颜色
         api.setStatusBarStyle({
             style: 'light',
-            color:'#000'
+            color:'#343434'
         });
         // 引导页
         var intro_ist = $api.getStorage('introt');
@@ -401,21 +394,23 @@ footbookLi.onclick = function () {
             }
         }
     }
-
     function clickRandomSwiBtn1() {
         api.closeFrame({
-            name: 'zhineng'
+            name: 'SmartLife'
         });
         api.closeFrame({
             name: 'My'
         });
+      $api.html($api.dom(".footerBg.one"),'&#xe621;')
+      $api.html($api.dom(".footerBg.three"),'&#xe61e;')
+      $api.html($api.dom(".footerBg.two"),'&#xe618;')
     }
 
     //打开zhineng页面
     function clickRandomSwiBtn2() {
         api.openFrame({
-            name: 'zhineng',
-            url: 'html/zhineng.html',
+            name: 'SmartLife',
+            url: 'html/SmartLife.html',
             rect: {
                 marginTop: 0,
                 marginBottom: footerH,
@@ -424,6 +419,9 @@ footbookLi.onclick = function () {
             },
             bounces: false
         });
+        $api.html($api.dom(".footerBg.two"),'&#xe615;')
+        $api.html($api.dom(".footerBg.three"),'&#xe61e;')
+        $api.html($api.dom(".footerBg.one"),'&#xe629;')
     }
     //打开My页面
     function clickRandomSwiBtn3() {
@@ -438,6 +436,9 @@ footbookLi.onclick = function () {
             },
             bounces: false
         });
+      $api.html($api.dom(".footerBg.three"),'&#xe620;')
+      $api.html($api.dom(".footerBg.one"),'&#xe629;')
+      $api.html($api.dom(".footerBg.two"),'&#xe618;')
     }
     //打开search页面
     function openSearch() {
@@ -458,7 +459,6 @@ footbookLi.onclick = function () {
               name: 'test'
           }
       });
-
     }
 </script>
 

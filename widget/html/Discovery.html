@@ -6,7 +6,7 @@
       <title发现</title>
       <link rel="stylesheet" type="text/css" href="../css/api.css"/>
       <style>
-        @font-face {
+      @font-face {
           font-family: 'iconfont';
           src: url('../icon/iconfont.eot');
           src: url('../icon/iconfont.eot?#iefix') format('embedded-opentype'),
@@ -81,6 +81,7 @@
             width: 100%;
             height: 35px;
             z-index: 1;
+            border-bottom: 1px solid #dfdfdf;
           }
 
           .mue .click{
@@ -90,7 +91,7 @@
             text-align: center;
             line-height: 40px;
             font-size: 15px;
-            color: #242424;
+            color: #5f5d5d;
             position: relative;
           }
           /*.mue div span{
@@ -100,9 +101,10 @@
             top: 12px;
             height: 12px;
           }*/
-          .mue div.hover{
-            color: #242424;
+          .mue .click.hover{
+            color: #000;
             font-weight: 600;
+            font-size: 17px;
           }
 /*mue end*/
 
@@ -357,58 +359,61 @@
         btns[j].onclick =  function(){
             for(var x=0;x<btns.length;x++){
                 btns[x].className = 'click';
-              }
-              this.className = 'click hover';
-              htmls = '';
-              discoveryDate(this.index);
-              tid = this.index;
+            }
+            this.className = 'click hover';
+            htmls = '';
+            discoveryDate(this.index);
+            tid = this.index;
         }
     }
     var numb = 0;
     var countNum = 0;
     var countN = 0;
     apiready = function(){
+      banner();
+      discoveryDate(0,0);
+
+      //下拉刷新
+      api.setRefreshHeaderInfo({
+        loadingImg: 'widget://image/refresh.png',
+        bgColor: '#f1f1f1',
+        textColor: '#000',
+        textDown: '拉我试试',
+        textUp: '松开刷新...',
+        showTime:'false'
+      } , function(ret, err) {
+        htmls = '';
+        discoveryDate(tid,0)
+        numb=0;
+        api.refreshHeaderLoadDone();
         banner();
-        discoveryDate(0,0);
-        //下拉刷新
-            api.setRefreshHeaderInfo({
-              loadingImg: 'widget://image/refresh.png',
-              bgColor: '#fff',
-              textColor: '#000',
-              textDown: '拉我试试',
-              textUp: '松开刷新...',
-              showTime:'false'
-            } , function(ret, err) {
-              htmls = '';
-              discoveryDate(tid,0)
-              numb=0;
-              api.refreshHeaderLoadDone();
-            });
-        //上拉加载
-        api.addEventListener({
-          name:'scrolltobottom',
-          extra:{
-            threshold:0 //设置距离底部多少距离时触发，默认值为0，数字类型
-          }
-        }, function(ret, err){
+      });
+
+      //上拉加载
+      api.addEventListener({
+        name:'scrolltobottom',
+        extra:{
+          threshold:0 //设置距离底部多少距离时触发，默认值为0，数字类型
+        }
+      },function(ret, err){
           numb++;
           discoveryDate(tid,numb);
       })
+
       //原生滑动
       function GetSlideAngle(dx, dy) {
           return Math.atan2(dy, dx) * 180 / Math.PI;
       }
+
       //根据起点和终点返回方向 1：向上，2：向下，3：向左，4：向右,0：未滑动
       function GetSlideDirection(startX, startY, endX, endY) {
           var dy = startY - endY;
           var dx = endX - startX;
           var result = 0;
-
           //如果滑动距离太短
           if(Math.abs(dx) < 40 && Math.abs(dy) <40) {
               return result;
           }
-
           var angle = GetSlideAngle(dx, dy);
           if(angle >= -45 && angle < 45) {
               result = 4;
@@ -420,7 +425,6 @@
           else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
               result = 3;
           }
-
           return result;
       }
 
@@ -456,7 +460,7 @@
                           ridusTolles[i].className='';
                         }
                         if(num==listpi.length){
-                          ridusTolles[0].className='current'
+                          $api.addCls(ridusTolles[0],'current')
                         }
                         else{
                           $api.addCls(ridusTolles[num],'current')
@@ -469,36 +473,56 @@
         }
         touchTarger(content);
         touchTarger(section);
-      }//
-      //banner
-      function banner(){
-        var html = '';
-        var li = '';
-        api.ajax({
-            url: 'http://www.juzzn.com/banner.php',
-            method: 'post'
-        },function(ret, err){
-            if (ret.status == 1) {
-                var data= ret.data;
-                for(var i=0;i<data.length&i<5;i++){
-                  html+='<a href="'+data[i]['url']+'"><img src="'+data[i]['images']+'" alt="'+i+'"/></a>';
-                }
-                li+='<li class="current"></li>';
-                for(var i=1;i<data.length&i<5;i++){
-                  li+='<li></li>';
-                }
-            } else {
-                html+='<img src="../images/discovery/discovery_banner1.png" / alt="1">';
-                li+='<li></li>';
-            }
-            $api.html($api.byId('scroll'), html);
-            $api.html($api.byId('ridusTolle'), li);
-            for(var j = 0;j<listpi.length;j++){
-              listpi[j].style.width = winWdith+'px'
+    }//
+
+    //打开banner链接
+    function openHref(url){
+      var aids = url.replace(/(http:\/\/www\.lxzntech\.com\/portal\.php\?mod=view&aid=)/i,'');
+      var match = /^[0-9]+$/;
+      var sta = match.test(aids);
+      if(sta){
+        api.openWin({
+            name: 'ArticalDetails',
+            url: 'ArticalDetails.html',
+            pageParam: {
+                aid: aids
             }
         });
-
+      }else{
+        api.openWin({
+            name: 'ArticalDetails',
+            url: url
+        });
       }
+    }
+    //banner
+    function banner(){
+      var html = '';
+      var li = '';
+      api.ajax({
+          url: 'http://www.lxzntech.com/banner.php',
+          method: 'post'
+      },function(ret, err){
+          if (ret.status == 1) {
+              var data= ret.data;
+              for(var i=0;i<data.length&i<5;i++){
+                html+='<img onclick="openHref(\''+data[i]['url']+'\')" src="'+data[i]['images']+'" alt="'+i+'"/>';
+              }
+              li+='<li class="current"></li>';
+              for(var i=1;i<data.length&i<5;i++){
+                li+='<li></li>';
+              }
+          } else {
+              html+='<img src="../images/discovery/discovery_banner1.png" / alt="0">';
+              li+='<li></li>';
+          }
+          $api.html($api.byId('scroll'), html);
+          $api.html($api.byId('ridusTolle'), li);
+          for(var j = 0;j<listpi.length;j++){
+            listpi[j].style.width = winWdith+'px'
+          }
+      });
+    }
       var htmls = '';
       var userdata = {};
       userdata = $api.getStorage('userdata');
@@ -510,7 +534,7 @@
           // htmls = '';
         }
       api.ajax({
-          url:'http://www.juzzn.com/discovery.php',
+          url:'http://www.lxzntech.com/discovery.php',
           method:'post',
           dataType:'json',
           data: {
@@ -529,7 +553,7 @@
                   htmls+='<div onclick=OpenDetail('+data[i]['aid']+')>';
                         htmls += '<div class="picture">';
                         //图片数据
-                            htmls += '<img width="100%" src="http://www.juzzn.com/data/attachment/'+data[i]['pic']+'">';
+                            htmls += '<img width="100%" src="http://www.lxzntech.com/data/attachment/'+data[i]['pic']+'">';
                         htmls += '</div>';
                         //文章标题
                         htmls += '<div class="text">';
@@ -631,15 +655,13 @@
       var num = 0;
       function animate(){
         num++;
-        if(num==listpi.length){
-          num=0;
-          list.style.left='0'
-        }
         for (var i = 0; i < ridusTolles.length; i++) {
           ridusTolles[i].className='';
         }
         if(num==listpi.length){
-          ridusTolles[0].className='current'
+          num=0;
+          list.style.left='0';
+          $api.addCls(ridusTolles[0],'current')
         }
         else{
           $api.addCls(ridusTolles[num],'current')

@@ -32,11 +32,9 @@
           header .headermenu>i{
             position: absolute;
             left: 15px;
-
             top:32px;
-            width: 14px;
-            height: 14px;
-
+            width: 12px;
+            height: 12px;
             border: 1px solid #fff;
             border-top: none;
             border-right: none;
@@ -486,6 +484,7 @@
       return tagArr;
     }
   }
+
   //切换盒子
   var btns = document.getElementById('menu').getElementsByTagName('div');
   var maxboxs = getClass("div","main")
@@ -510,7 +509,6 @@
   }
 }
 
-
 var uid = '';
 var data = {};
 var html = '';
@@ -523,7 +521,7 @@ userdata = $api.getStorage('userdata');
 apiready = function(){
   uid = api.pageParam.uid;
   api.ajax({
-      url: 'http://www.juzzn.com/myCenter.php',
+      url: 'http://www.lxzntech.com/myCenter.php',
       method: 'post',
       data: {
           values: {
@@ -557,7 +555,7 @@ apiready = function(){
             }
               htmlmain+='<div class="article" onclick="'+opendetails+'">';
               if(data.sentData[i]['pic']!=''){
-                htmlmain+='<div class="image"><img src="http://www.juzzn.com/data/attachment/'+data['sentData'][i]['pic']+'" alt=""></div>';
+                htmlmain+='<div class="image"><img src="http://www.lxzntech.com/data/attachment/'+data['sentData'][i]['pic']+'" alt=""></div>';
               }
                 htmlmain+='<div class="text">';
                   htmlmain+='<div class="title t">'+data['sentData'][i]['title']+'</div>';
@@ -595,7 +593,7 @@ apiready = function(){
       $api.html($api.byId('footer'), htmlfoot);
   });
 
- }
+}//
 
   function openChatWindow(uid){
     api.openWin({
@@ -610,7 +608,7 @@ apiready = function(){
 
 function follows(){
   api.ajax({
-      url: 'http://www.juzzn.com/action.php?action=follow',
+      url: 'http://www.lxzntech.com/action.php?action=follow',
       method: 'post',
       data: {
           values: {
@@ -645,7 +643,7 @@ function follows(){
       Toast('请登录后再操作')
     }
     api.ajax({
-        url: 'http://www.juzzn.com/actionCancel.php?action=follow',
+        url: 'http://www.lxzntech.com/actionCancel.php?action=follow',
         method: 'post',
         data: {
             values: followData

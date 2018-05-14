@@ -667,7 +667,7 @@
       CommentDetailsDatas.tid=pageParamTid
     }
     api.ajax({
-        url: 'http://www.juzzn.com/discDetail.php',
+        url: 'http://www.lxzntech.com/discDetail.php',
         method: 'post',
         data: {
             values: CommentDetailsDatas
@@ -909,7 +909,7 @@
       }
     }
     api.ajax({
-        url: 'http://www.juzzn.com/action.php?action='+type,
+        url: 'http://www.lxzntech.com/action.php?action='+type,
         method: 'post',
         data: {
             values: resData
@@ -947,7 +947,7 @@
       Toast('请登录之后再进行操作')
     }
     api.ajax({
-        url: 'http://www.juzzn.com/actionCancel.php?action=fav',
+        url: 'http://www.lxzntech.com/actionCancel.php?action=fav',
         method: 'post',
         data: {
             values: resData
@@ -975,7 +975,7 @@
       Toast('请登录之后再进行操作')
     }
     api.ajax({
-        url: 'http://www.juzzn.com/actionCancel.php?action=follow',
+        url: 'http://www.lxzntech.com/actionCancel.php?action=follow',
         method: 'post',
         data: {
             values: followdatas
@@ -993,7 +993,7 @@
   function  postlike(pid) {
     if(userdata){
       api.ajax({
-          url: 'http://www.juzzn.com/postLike.php',
+          url: 'http://www.lxzntech.com/postLike.php',
           method: 'post',
           data: {
               values: {
@@ -1038,7 +1038,7 @@
           Toast('请输入你要评论的内容',2000)
         }else {
           api.ajax({
-            url: 'http://www.juzzn.com/comment.php',
+            url: 'http://www.lxzntech.com/comment.php',
             method: 'post',
             data: {
                   values:criticismData

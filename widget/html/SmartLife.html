@@ -125,64 +125,6 @@
             top: 100px;
         }
 
-        footer {
-            height: 50px;
-            width: 100%;
-            background-color: #81a9c3;
-            color: white;
-            text-align: center;
-        }
-
-        footer ul {
-            width: 100%;
-            height: 100%;
-        }
-
-        footer ul li {
-            width: 33.333%;
-            height: 100%;
-            float: left;
-            background: #e5e5e5;
-        }
-
-        footer ul li span {
-            height: 20px;
-            font-size: 10px;
-            display: inline;
-        }
-
-        footer ul li div {
-            height: 14px;
-            font-size: 10px;
-            color: #999;
-        }
-
-        footer ul li div.footerBg {
-            width: 100%;
-            height: 36px;
-        }
-
-        footer ul li div.footerBg div {
-            width: 26px;
-            height: 26px;
-            position: relative;
-            margin: 0 auto;
-            top: 6px;
-        }
-
-        footer ul li div.footerBg.big {
-            width: 50px;
-            height: 44px;
-            position: relative;
-            margin: 0 auto;
-            border-radius: 50%;
-            background: url('../images/index/main.png') no-repeat center center;
-            background-color: #000;
-            -webkit-background-size: 180% 180%;
-            background-size: 180% 180%;
-            padding-bottom: 6px;
-        }
-
 
     </style>
 </head>
@@ -195,43 +137,32 @@
             <a class="menu hover">智能场景</a>
         </div>
         <div class="add">
-            <a href="#">+</a></div>
+            <a href="#" onclick="openChooseDevicetype()">+</a></div>
     </header>
     <section class="flex-1">
         <div class="adddevice">
             <p>暂时还没有设备</p>
             <div class="center-button" style="padding:0px 10px;">
-                <button type="button" name="">添加设备</button>
+                <button type="button" name="" onclick="openChooseDevicetype()">添加设备</button>
             </div>
         </div>
     </section>
-    <footer id="footer">
-        <ul>
-            <li>
-                <div class="footerBg one current">
-                    <div class="first"><img src="../images/index/index.png" alt="" style="width:150%; height:180%; margin-top:-6px; margin-left:-7px;"></div>
-                </div>
-                <div class="firstbook">首页</div>
-            </li>
-            <li>
-                <div class="footerBg big two current">
-
-                </div>
-            </li>
-            <li>
-                <div class="footerBg three current">
-                    <div class="second"><img src="../images/index/mine.png" alt="" style="width:150%; height:180%; margin-top:-6px;margin-left:-7px;"></div>
-                </div>
-                <div class="mybook">我的</div>
-            </li>
-        </ul>
-    </footer>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
     apiready = function() {
 
     };
+    function openChooseDevicetype(){
+      api.openWin({
+          name: 'ChooseDevicetype',
+          url: 'gateway/ChooseDevicetype.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+    }
 </script>
 
 </html>

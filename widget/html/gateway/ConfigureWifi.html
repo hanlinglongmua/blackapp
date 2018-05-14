@@ -97,7 +97,7 @@
         <!-- header begin -->
         <div class="header">
             <div class="top">
-                <div class="sect left"><i></i></div>
+                <div class="sect left"><i onclick="api.closeWin()"></i></div>
             </div>
         </div>
         <!-- header end -->
@@ -128,7 +128,7 @@
 
             <footer>
                 <div class="center-button">
-                    <button type="button" name="">配置wifi</button>
+                    <button type="button" name="" onclick="openLinkWifi()">配置wifi</button>
                 </div>
             </footer>
 
@@ -140,6 +140,16 @@
     apiready = function() {
 
     };
+    function openLinkWifi(){
+      api.openWin({
+          name: 'LinkWifi',
+          url: 'LinkWifi.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+    }
 </script>
 
 </html>

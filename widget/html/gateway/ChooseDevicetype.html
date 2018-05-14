@@ -20,7 +20,7 @@
             background-color: #f1f1f1;
         }
 
-      
+
         /*header 顶部样式*/
 
         .header {
@@ -118,7 +118,7 @@
         <!-- header begin -->
         <div class="header">
             <div class="top">
-                <div class="sect left"><i ></i></div>
+                <div class="sect left"><i onclick="api.closeWin()"></i></div>
                 <div class="sect fo">选择设备型号</div>
             </div>
         </div>
@@ -130,7 +130,7 @@
             <!-- 常用设备 begin-->
                     <li class="alldevice">常用设备</li>
                     <div class="allborder">
-                        <div class="border">
+                        <div class="border" onclick="openNetworkConfigure()">
                             <img src="../../images/gatewayimages/choosedevicetype/camera.png">
                             <span>摄像头</span>
                         </div>
@@ -168,6 +168,16 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
+    function openNetworkConfigure(){
+      api.openWin({
+          name: 'NetworkConfigure',
+          url: 'NetworkConfigure.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+    }
 </script>
 
 </html>

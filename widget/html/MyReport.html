@@ -247,7 +247,7 @@
       apiready = function(){
           var html = '';
           api.ajax({
-              url: 'http://www.juzzn.com/myCenter.php',
+              url: 'http://www.lxzntech.com/myCenter.php',
               method: 'post',
               data: {
                   values: {
@@ -260,7 +260,7 @@
                     for(var i=0;i<data.length;i++){
                       if(data[i]['idtype'] == 'aid'){
                         html+='<div class="article" onclick="openArticalDetails('+data[i]['id']+')">';
-                          html+='<div class="image"><img src="http://www.juzzn.com/data/attachment/'+data[i]['pic']+'" alt=""></div>';
+                          html+='<div class="image"><img src="http://www.lxzntech.com/data/attachment/'+data[i]['pic']+'" alt=""></div>';
                           html+='<div class="text">';
                             html+='<div class="title t">'+data[i]['title']+'</div>';
                             html+='<div class="foot t">';

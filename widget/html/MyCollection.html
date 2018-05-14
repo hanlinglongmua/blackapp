@@ -333,7 +333,7 @@ function MyCollectionData(index){
         userdata = $api.getStorage('userdata');
         var html = '';
         api.ajax({
-            url: 'http://www.juzzn.com/myCenter.php',
+            url: 'http://www.lxzntech.com/myCenter.php',
             method: 'post',
             data: {
                 values: {
@@ -346,7 +346,7 @@ function MyCollectionData(index){
                   if(index==0){
                     for(var i=0;i<data.article.length;i++){
                       html+='<div class="article" onclick="OpenDetail('+data.article[i]['aid']+')">';
-                            html+='<div class="image"><img src="http://www.juzzn.com/data/attachment/'+data.article[i]['pic']+'" alt=""></div>';
+                            html+='<div class="image"><img src="http://www.lxzntech.com/data/attachment/'+data.article[i]['pic']+'" alt=""></div>';
                             html+='<div class="text">';
                                   html+='<div class="title t">'+data.article[i]['title']+'</div>';
                                   html+='<div class="foot t">';

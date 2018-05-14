@@ -116,7 +116,6 @@
    }
   .photoprojector img{
     width: 100%;
-    height: 150px;
   }
    .photoprojector .playmode {
      position: absolute;
@@ -835,7 +834,7 @@ return_top.onclick = function (){
       ArticalDetailsData.aid = pageParamAid;
     }
         api.ajax({
-            url: 'http://www.juzzn.com/articleDetail.php',
+            url: 'http://www.lxzntech.com/articleDetail.php',
             method: 'post',
             data: {
                 values:ArticalDetailsData
@@ -878,7 +877,7 @@ return_top.onclick = function (){
                       for(var i=0;i<5;i++){
                         html+='<li onclick="OpenDetail('+data['relates'][i]['aid']+')">';
                           html+='<a href="javascript:;">';
-                            html+='<div class="empire"><img src="http://www.juzzn.com/data/attachment/'+data['relates'][i]['pic']+'" alt=""></div>';//相关推荐图片
+                            html+='<div class="empire"><img src="http://www.lxzntech.com/data/attachment/'+data['relates'][i]['pic']+'" alt=""></div>';//相关推荐图片
                             html+='<div><p>'+data['relates'][i]['title']+'</p><span>'+data['relates'][i]['dateline']+'</span></div>';//相关推荐
                           html+='</a>';
                         html+='</li>';
@@ -1017,7 +1016,7 @@ return_top.onclick = function (){
       Toast('请登录之后再进行操作' )
     }
     api.ajax({
-        url: 'http://www.juzzn.com/action.php?action=follow',
+        url: 'http://www.lxzntech.com/action.php?action=follow',
         method: 'post',
         data: {
             values: followData
@@ -1046,7 +1045,7 @@ return_top.onclick = function (){
       Toast('请登录之后再进行操作' )
     }
     api.ajax({
-        url: 'http://www.juzzn.com/actionCancel.php?action=follow',
+        url: 'http://www.lxzntech.com/actionCancel.php?action=follow',
         method: 'post',
         data: {
             values: followData
@@ -1073,7 +1072,7 @@ return_top.onclick = function (){
       Toast('请登录之后再进行操作' )
     }
     api.ajax({
-        url: 'http://www.juzzn.com/like.php',
+        url: 'http://www.lxzntech.com/like.php',
         method: 'post',
         data: {
             values: likedatas
@@ -1167,7 +1166,7 @@ return_top.onclick = function (){
     }
 
     api.ajax({
-        url: 'http://www.juzzn.com/action.php?action=favorite',
+        url: 'http://www.lxzntech.com/action.php?action=favorite',
         method: 'post',
         data: {
             values: resData
@@ -1198,7 +1197,7 @@ return_top.onclick = function (){
     }
 
     api.ajax({
-        url: 'http://www.juzzn.com/actionCancel.php?action=fav',
+        url: 'http://www.lxzntech.com/actionCancel.php?action=fav',
         method: 'post',
         data: {
             values: resData
@@ -1253,7 +1252,7 @@ return_top.onclick = function (){
           textareaMain.getElementsByTagName("textarea")[0].focus();
         }else {
           api.ajax({
-                url: 'http://www.juzzn.com/articleComment.php',
+                url: 'http://www.lxzntech.com/articleComment.php',
                 method: 'post',
                 data: {
                       values:criticismData
@@ -1307,7 +1306,7 @@ return_top.onclick = function (){
       Toast('请登录之后再进行操作' )
     }
     api.ajax({
-        url: 'http://www.juzzn.com/like.php',
+        url: 'http://www.lxzntech.com/like.php',
         method: 'post',
         data: {
             values: likeDatas
