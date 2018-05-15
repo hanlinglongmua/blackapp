@@ -1,182 +1,239 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>登录界面</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css" />
-	<style>
-  body,html{
-    width: 100%;
-    height:100%;
-    background-color: #f1f1f1;
-  }
-  /*头部*/
-  .header{
-      width: 100%;
-      text-align: center;
-      margin: 26px auto 0;
-    }
-  .header-img{
-    margin:0 auto 20px;
-    height: 58px;
-    width: 58px;
-    border-radius: 50%;
-    background-color: black;
-    background: url('../images/same_content/fly.png') no-repeat;
-    background-size: 100%;
-  }
+    <style>
+        @font-face {
+            font-family: 'iconfont';
+            src: url('../icon/iconfont.eot');
+            src: url('../icon/iconfont.eot?#iefix') format('embedded-opentype'), url('../icon/iconfont.woff') format('woff'), url('../icon/iconfont.ttf') format('truetype'), url('../icon/iconfont.svg#iconfont') format('svg');
+        }
 
-  .helmet{
-     background: url('../images/same_content/Header.jpg');
-     width: 100%;
-     height: 70px;
-     line-height: 86px;
-     color: #ffffff;
-     font-size: 20px;
-     text-align: center;
-  }
-  .helmetleft{
-    position: absolute;
-    left: 15px;
-    top:36px;
-    width: 12px;
-    height: 12px;
-    border: 1px solid #fff;
-    border-top: none;
-    border-right: none;
-    transform:rotate(45deg);
-    -webkit-transform:rotate(45deg);
-  }
-  .headermid{
-    font-size: 18px;
-    line-height: 70px;
-    color: #fff;
-    text-align: center;
-  }
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-style: normal;
+            font-size: 20px;
+            color: #7e7e7e;
+            border-radius: 50%;
+        }
 
-  /*表单盒子*/
-  .center{
-    margin-top: 20px;
-  }
-  .center-input,.center-text,.center-button{
-    height:35px;
-    margin:0 auto;
-    margin-bottom: 10px;
-    width: 70%;
-    position: relative;
-  }
-  .center-input>span{
-    display: inline-block;
-    height:30px;
-    width: 7%;
-    background:url('../images/login/loginLogo.png') no-repeat;
-    -webkit-background-size: 100% auto;
-    float: left;
-    background-position: center center;
-    position: relative;
-    left:-2%;
-  }
-  .center-input .passWLogo{
-    display: inline-block;
-    height:30px;
-    width: 7%;
-    background:url('../images/login/PassWLogo.png') no-repeat;
-    background-size: 100% auto;
-    background-position: center center;
-  }
-  .center-input input{
-    height:100%;
-    width:90%;
-    border-bottom: 1px solid #999;
-    font-size:15px;
-    outline:none;
-    line-height: 20px;
-  }
-  .center-text a{
-      float:right;
-      color: #000;
-      font-size: 12px;
-  }
-  /*表单勾选*/
-  #check {
-  margin-top: 50px;
-  font-size: 12px;
-  }
-  #check .input_check {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  visibility: hidden;
-  background: #E92333;}
-  #check span {
-  position: relative;
-  }
-  #check .input_check+label {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border: 2px solid #666;
-  }
-  #check .input_check:checked+label {
-  background:#000;
-  }
-  /*按钮*/
-  .center-button{
-    height: 40px;
-  }
-  .center-button button{
-    margin-top: 34px;
-    background-color: #24292d;
-    width:100%;
-    height:100%;
-    border: 1px solid #999;
-    color:#ffffff;
-    outline:none;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-  /*脚部*/
-  .footer{
-    position: relative;
-    padding-top: 90px;
-  }
-  .footer .line{
-    padding-bottom: 25px;
-    text-align: center;
-    font-size: 12px;
-    color: #d8d8d8    ;
-  }
-  .footer-leftline{
-    position: absolute;
-    left: 40px;
-    top: 74%;
-    height: 1px;
-    width: 15%;
-    background: linear-gradient(to left,rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.1));
-  }
-  .footer-rightline{
-    position: absolute;
-    right:  40px;
-    top: 74%;
-    height: 1px;
-    width: 15%;
-    background: linear-gradient(to right,rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.1));
-  }
-  .footer-a{
-    width: 90%;
-    margin:0 auto;
-  }
-  .footer-a ul{
-    width: 100%;
-    height: 100%;
-  }
-  .footer-a ul li{
-    float: left;
-    width: 33.33%;
-  }
-  .footer-a ul li a{
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background-color: #f1f1f1;
+        }
+
+        a {
+            display: block;
+        }
+        /*头部*/
+
+        .header {
+            width: 100%;
+            text-align: center;
+            margin: 26px auto 0;
+        }
+
+        .header-img {
+            margin: 0 auto 20px;
+            height: 58px;
+            width: 58px;
+            border-radius: 50%;
+            background-color: black;
+            background: url('../images/same_content/fly.png') no-repeat;
+            background-size: 100%;
+        }
+
+        .helmet {
+            background: url('../images/same_content/Header.jpg');
+            width: 100%;
+            height: 70px;
+            line-height: 86px;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .helmetleft {
+            position: absolute;
+            left: 15px;
+            top: 36px;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #fff;
+            border-top: none;
+            border-right: none;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+
+        .headermid {
+            font-size: 18px;
+            line-height: 70px;
+            color: #fff;
+            text-align: center;
+        }
+        /*表单盒子*/
+
+        .center {
+            margin-top: 20px;
+        }
+
+        .center-input,
+        .center-text,
+        .center-button {
+            height: 35px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            width: 70%;
+            position: relative;
+        }
+
+        .center-input>span {
+            display: inline-block;
+            height: 30px;
+            width: 7%;
+            /*background:url('../images/login/loginLogo.png') no-repeat;*/
+            -webkit-background-size: 100% auto;
+            float: left;
+            background-position: center center;
+            position: relative;
+            left: -6%;
+            top: 5px;
+        }
+
+        .center-input .passWLogo {
+            display: inline-block;
+            height: 30px;
+            width: 7%;
+            /*background:url('../images/login/PassWLogo.png') no-repeat;*/
+            background-size: 100% auto;
+            background-position: center center;
+        }
+
+        .center-input input {
+            height: 100%;
+            width: 90%;
+            border-bottom: 1px solid #999;
+            font-size: 15px;
+            outline: none;
+            line-height: 20px;
+        }
+
+        .center-text a {
+            float: right;
+            color: #000;
+            font-size: 12px;
+        }
+        /*表单勾选*/
+
+        #check {
+            margin-top: 50px;
+            font-size: 12px;
+        }
+
+        #check .input_check {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            visibility: hidden;
+            background: #E92333;
+        }
+
+        #check span {
+            position: relative;
+        }
+
+        #check .input_check+label {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border: 2px solid #666;
+        }
+
+        #check .input_check:checked+label {
+            background: #000;
+        }
+        /*按钮*/
+
+        .center-button {
+            height: 40px;
+        }
+
+        .center-button button {
+            margin-top: 34px;
+            background-color: #24292d;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #999;
+            color: #ffffff;
+            outline: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        /*脚部*/
+
+        .footer {
+            position: relative;
+            padding-top: 90px;
+        }
+
+        .footer .line {
+            padding-bottom: 25px;
+            text-align: center;
+            font-size: 12px;
+            color: #d8d8d8;
+        }
+
+        .footer-leftline {
+            position: absolute;
+            left: 40px;
+            top: 74%;
+            height: 1px;
+            width: 15%;
+            background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.1));
+        }
+
+        .footer-rightline {
+            position: absolute;
+            right: 40px;
+            top: 74%;
+            height: 1px;
+            width: 15%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.1));
+        }
+
+        .footer-a {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .footer-a ul {
+          display: flex;
+        }
+
+        .footer-a ul li {
+          flex: 0 0 33.33333%;
+        }
+        .footer-a a{
+            display: flex;
+            flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              color: #000;
+        }
+          .footer-a ul span{
+                margin-top: 5px;
+                font-size: 10px;
+                color: #464646;
+          }
+        /*.footer-a ul li a{
       background:url('../images/login/qq.png') no-repeat;
     -webkit-background-size: 100% auto;
     background-size: auto 100%;
@@ -196,146 +253,179 @@
     -webkit-background-size: 100% auto;
     background-size: auto 100%;
     background-position: center center;
-  }
-  .footer-a ul li div{
-    text-align: center;
-    font-size: 10px;
-    color: #464646;
-  }
-  .checkboxBox{
-    color: #000;
-  }
-  @media screen and (max-width: 320px){
-    .header{
-      margin-top: 1.5rem;
-    }
-  }
-	</style>
+  }*/
+
+        .footer-a ul li div {
+            text-align: center;
+            font-size: 10px;
+            color: #464646;
+            position: relative;
+        }
+
+        .checkboxBox {
+            color: #000;
+        }
+
+        @media screen and (max-width: 320px) {
+            .header {
+                margin-top: 1.5rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div style="overflow:hidden;height:100%;width:100%;max-width:555px;margin:0 auto;">
-  <!-- header -->
-  <div class="headerdiscontent">
-     <div class="helmet">
-      <span >登录</span>
-       <div class="helmetleft" onclick="api.closeWin()"></div>
-     </div>
-  </div>
-       <div class="header">
-           <div class="header-img"></div>
-       </div>
-  <!-- header-end -->
-  <!-- body -->
-       <div class="center">
-           <form action="" id='myForm' method="post" >
-             <div class="center-input">
-               <span></span>
-               <input type="text" name="" value="" placeholder="手机号码/邮箱" maxLength="15" class="accound" id="accound">
-             </div>
-             <div class="center-input">
-               <span class="passWLogo"></span>
-               <input type="password" name="" value="" placeholder="账号密码"  maxLength="15" class="password" id="password">
-             </div>
-           <div class="center-button">
-             <button type="button" name=""  id="btns" onclick="sub()">登录</button>
-          </div>
-           <div class="center-text" id="check">
-              <span class="checkboxBox" onclick="openRegister()">马上注册</span>
-              <a href="" onclick="openResetPassword()">忘记密码?</a>
-           </div>
-        </form>
-       </div>
-     <!-- body-end -->
-     <!-- footer -->
+        <!-- header -->
+        <div class="headerdiscontent">
+            <div class="helmet">
+                <span>登录</span>
+                <div class="helmetleft" onclick="api.closeWin()"></div>
+            </div>
+        </div>
+        <div class="header">
+            <div class="header-img"></div>
+        </div>
+        <!-- header-end -->
+        <!-- body -->
+        <div class="center">
+            <form action="" id='myForm' method="post">
+                <div class="center-input">
+                    <span><i class="iconfont" >&#xe61f;</i></span>
+                    <input type="text" name="" value="" placeholder="手机号码/邮箱" maxLength="15" class="accound" id="accound">
+                </div>
+                <div class="center-input">
+                    <span class="passWLogo"><i class="iconfont" >&#xe657;</i></span>
+                    <input type="password" name="" value="" placeholder="账号密码" maxLength="15" class="password" id="password">
+                </div>
+                <div class="center-button">
+                    <button type="button" name="" id="btns" onclick="sub()">登录</button>
+                </div>
+                <div class="center-text" id="check">
+                    <span class="checkboxBox" onclick="openRegister()">马上注册</span>
+                    <a href="" onclick="openResetPassword()">忘记密码?</a>
+                </div>
+            </form>
+        </div>
+        <!-- body-end -->
+        <!-- footer -->
 
-       <div class="footer">
-         <div class="line">
-           <div class="footer-leftline log"></div>
-           你也可以使用一下登录方式
-           <div class="footer-rightline log"></div>
-         </div>
-         <div class="footer-a">
-           <ul>
-             <li><a href=""></a><div>QQ</div></li>
-             <li><a href="" class="two"></a><div>微信</div></li>
-             <li><a href="" class="three"></a><div>微博</div></li>
-           </ul>
-         </div>
-       </div>
-      <!-- footer-end -->
-   </div>
+        <div class="footer">
+            <div class="line">
+                <div class="footer-leftline log"></div>
+                <i style="color:#646363; font-style:normal;">你也可以使用一下登录方式</i>
+                <div class="footer-rightline log"></div>
+            </div>
+        </div>
+        <!-- footer-end -->
+        <div class="footer-a">
+            <ul>
+
+                <li>
+                    <a href="">
+                        <i class="iconfont" style="font-size:30px;">&#xe71a;</i> <span>QQ</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <i class="iconfont" style="font-size:34px;">&#xe715;</i>
+                        <span>
+                        微信
+                      </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <i class="iconfont" style="font-size:34px;">&#xe699;</i> <span>微博</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
+    // 限制input输入长度
+    var input = document.querySelector("#password")
+    console.log(input.maxLength);
+    var input = document.querySelector("#accound")
+    console.log(input.maxLength);
 
-    function sub(){
-      var accound = $api.val($api.byId('accound'))
-      var password = $api.val($api.byId('password'))
-      if(accound==''&&password==''){
-        Toast('请输入账号和密码',2000)
-      }else if(password==''){
-        Toast('请输入密码',2000)
-      }else if(accound==''){
-        Toast('请输入账号',2000)
-      }else{
-      api.ajax({
-        url: 'http://www.lxzntech.com/appapi/login.php',
-        method: 'post',
-        data: {
-            values: {
-                'password':password,'username':accound
-            }
+    function sub() {
+        var accound = $api.val($api.byId('accound'))
+        var password = $api.val($api.byId('password'))
+        if (accound == '' && password == '') {
+            Toast('请输入账号和密码', 2000)
+        } else if (password == '') {
+            Toast('请输入密码', 2000)
+        } else if (accound == '') {
+            Toast('请输入账号', 2000)
+        } else {
+            api.ajax({
+                url: 'http://www.juzzn.com/appapi/login.php',
+                method: 'post',
+                data: {
+                    values: {
+                        'password': password,
+                        'username': accound
+                    }
+                }
+            }, function(ret, err) {
+                if (ret.errornum == 'E00000') {
+                    $api.setStorage('userdata', ret.data); //获取用户数据
+                    Toast('登录成功')
+                    api.sendEvent({
+                        name: 'RefreshMy' //登录成功刷新会员中心页面
+                    });
+                    api.closeWin();
+                } else {
+                    Toast(ret.errormsg, 2000)
+                }
+            });
         }
-        }, function(ret, err) {
-          if (ret.errornum=='E00000') {
-              $api.setStorage('userdata',ret.data);//获取用户数据
-              Toast('登录成功')
-              api.sendEvent({
-                  name: 'RefreshMy'//登录成功刷新会员中心页面
-              });
-              api.closeWin();
-          } else {
-            Toast(ret.errormsg,2000)
-          }
-      });
-    }
     }
     //自定义弹框
-    function Toast(msg,duration){
-        duration=isNaN(duration)?3000:duration;
+    function Toast(msg, duration) {
+        duration = isNaN(duration) ? 3000 : duration;
         var m = document.createElement('div');
         m.innerHTML = msg;
-        m.style.cssText="width: 60%;min-width: 150px;opacity: 0.7;height: 30px;color: rgb(255, 255, 255);line-height: 30px;text-align: center;border-radius: 5px;position: fixed;top: 50%;left: 20%;z-index: 999999;background: rgb(0, 0, 0);font-size: 12px;";
+        m.style.cssText =
+            "width: 60%;min-width: 150px;opacity: 0.7;height: 30px;color: rgb(255, 255, 255);line-height: 30px;text-align: center;border-radius: 5px;position: fixed;top: 50%;left: 20%;z-index: 999999;background: rgb(0, 0, 0);font-size: 12px;";
         document.body.appendChild(m);
         setTimeout(function() {
             var d = 0.5;
             m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
             m.style.opacity = '0';
-            setTimeout(function() { document.body.removeChild(m) }, d * 1000);
+            setTimeout(function() {
+                document.body.removeChild(m)
+            }, d * 1000);
         }, duration);
     }
 
-    function openRegister(){
-      api.openWin({
-          name: 'Register',
-          url: 'Register.html',
-          pageParam: {
-              name: 'test'
-          }
-      });
+    function openRegister() {
+        api.openWin({
+            name: 'Register',
+            url: 'Register.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
     }
 
-    function openResetPassword(){
-      api.openWin({
-          name: 'ResetPassword',
-          url: 'ResetPassword.html',
-          pageParam: {
-              name: 'test'
-          }
-      });
+    function openResetPassword() {
+        api.openWin({
+            name: 'ResetPassword',
+            url: 'ResetPassword.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
 
     }
 </script>
+
 </html>
