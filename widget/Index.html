@@ -408,17 +408,25 @@
 
     //打开zhineng页面
     function clickRandomSwiBtn2() {
-        api.openFrame({
-            name: 'SmartLife',
-            url: 'html/SmartLife.html',
-            rect: {
-                marginTop: 0,
-                marginBottom: footerH,
-                w: 'auto',
-                h: 'auto'
-            },
-            bounces: false
+
+        // api.openFrame({
+        //     name: 'SmartLife',
+        //     url: 'html/SmartLife.html',
+        //     rect: {
+        //         marginTop: 0,
+        //         marginBottom: footerH,
+        //         w: 'auto',
+        //         h: 'auto'
+        //     },
+        //     bounces: false
+        // });
+        api.toast({
+            msg: '该功能暂未开放',
+            duration: 2000,
+            location: 'bottom'
         });
+
+
         $api.html($api.dom(".footerBg.two"),'&#xe615;')
         $api.html($api.dom(".footerBg.three"),'&#xe61e;')
         $api.html($api.dom(".footerBg.one"),'&#xe629;')

@@ -93,12 +93,14 @@
       float: left;
     }
     .artical .head .headerimg{
+      border-radius: 50%;
       width: 46px;
       height: 46px;
     }
     .artical .head .headerimg img{
       border-radius: 50%;
       width: 100%;
+      height: 100%;
     }
     .artical .head .headername{
       padding-left: 8px;
@@ -146,6 +148,7 @@
       -webkit-line-clamp:3;
       -webkit-box-orient:vertical;
       word-break: break-all;
+      -webkit-word-break: break-all;
     }
     .artical .list{
       padding: 10px 0 0 0;
@@ -204,7 +207,7 @@
     }
     .artical video{
       /*width: 100%;*/
-      height: 300px;
+      height: 320px;
     }
     /*main end*/
     </style>
@@ -325,7 +328,7 @@
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
 //切换盒子
-    var column =0
+    var column =0;
     var btns = document.getElementById('span').getElementsByTagName('li');
     for(var i=0;i<btns.length;i++){
         btns[i].index =i
@@ -342,6 +345,7 @@
         }
     }
     var nums = 0;
+    var total = 0;
     apiready = function(){
       api.addEventListener({
           name: 'swiperight'
@@ -352,21 +356,24 @@
 
       });
       CommunityDate(column,0)
-        //下拉刷新
-        api.setRefreshHeaderInfo({
-            loadingImg: 'widget://image/refresh.png',
-            bgColor: '#f1f1f1',
-            textColor: '#000',
-            textDown: '拉我试试',
-            textUp: '松开刷新...',
-            showTime:'false'
-        } , function(ret, err) {
-              html = '';
-              CommunityDate(column,0)
-              nums=0;
-              api.refreshHeaderLoadDone();
-        });
-    //上拉加载
+
+
+      //下拉刷新
+      api.setRefreshHeaderInfo({
+          loadingImg: 'widget://image/refresh.png',
+          bgColor: '#f1f1f1',
+          textColor: '#000',
+          textDown: '拉我试试',
+          textUp: '松开刷新...',
+          showTime:'false'
+      } , function(ret, err) {
+            html = '';
+            CommunityDate(column,0)
+            nums=0;
+            api.refreshHeaderLoadDone();
+      });
+      //上拉加载
+
       api.addEventListener({
         name:'scrolltobottom',
         extra:{
@@ -377,6 +384,7 @@
           CommunityDate(column,nums);
           num = nums;
       })
+
     }
     //ajax
     var html = '';
@@ -384,6 +392,11 @@
     userdata = $api.getStorage('userdata');
     var data = {};
     function CommunityDate(column,num){
+      if(total<num){
+        num = total;
+        nums = total;
+        return;
+      }
       var community = {};
       if(userdata){
         community.column = column;
@@ -401,6 +414,7 @@
             values:community
           }
       },function(ret, err){
+          total = ret.total;
           if (ret.status == 1) {
             data = ret.data;
             for(var i = 0;i<data.length;i++){
@@ -423,7 +437,7 @@
                     html+='</div>';
                     html+='<div class="text" onclick="openCommunityDetails('+data[i]['tid']+','+data[i]['authorid']+')">';
                         html+='<div class="title">'+data[i]['subject']+'</div>';//题目
-                        html+='<div class="textmain">'+data[i]['message']+'</div>';//内容
+                        html+='<div class="textmain" id="textmain">'+data[i]['message']+'</div>';//内容
                     html+='</div>';
                     if(data[i]['images'].length){
                       html+='<div class="picture">';
@@ -439,7 +453,7 @@
                         html+='<div class="ltls like"><i class="iconfont" onclick="like('+data[i]['tid']+','+data[i]['recNum']+')" id="likeimg'+data[i]['tid']+'">&#xe617;</i><div class="d" id="likenum'+data[i]['tid']+'">'+data[i]['recNum']+'</div></div>';//帖子喜欢数
                       }
                       html+='<div class="ltls talk"><i class="iconfont talkicon" onclick="toTalk('+data[i]['tid']+','+data[i]['authorid']+')">&#xe75b;</i><div class="d">'+data[i]['num']+'</div></div>';//帖子评论数
-                      html+='<div class="ltls look"><i class="iconfont"  onclick="openShareOther()">&#xe600;</i><div class="d"></div></div>';//分享
+                      html+='<div class="ltls look"><i class="iconfont" onclick="openShareOther()">&#xe600;</i><div class="d"></div></div>';//分享
                     html+='</div>';
                 html += '</div>';
               }
@@ -453,6 +467,8 @@
              $api.html($api.byId('maxbox'),html);
         });
     }
+
+
 
     function openCommunityDetails(tid,authorid){
         api.openWin({

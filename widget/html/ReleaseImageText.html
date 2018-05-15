@@ -98,7 +98,7 @@
             height: 50px;
           }
           section .main .addtitle input{
-            margin: 0 2% 0 3%;
+            margin: 0 2% 0 2%;
             font-size: 16px;
             color: #000;
             height: 50px;
@@ -241,11 +241,9 @@
     document.execCommand('insertimage',false,url);
     document.execCommand('insertparagraph');
     document.execCommand('insertparagraph');
-    document.execCommand('insertparagraph');
   }
   function inputVideo(url){
     document.execCommand('insertHTML',false,url);
-    document.execCommand('insertparagraph');
     document.execCommand('insertparagraph');
     document.execCommand('insertparagraph');
   }
@@ -377,7 +375,7 @@
                 }
             },function(ret, err){
                 if (ret.status) {
-                    var html='<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="100%" height="100%" poster="" data-setup="{}"><source src="'+ret.file+'" type="video/mp4" /></video>';
+                    var html='<video id="example_video_1" class="video-js vjs-default-skin" controls preload="" width="100%" height="100%" poster="../images/index/playimg.png" data-setup="{}"><source src="'+ret.file+'" type="video/mp4" /></video>';
                     inputVideo(html);
                 } else {
                     alert( JSON.stringify( err ) );

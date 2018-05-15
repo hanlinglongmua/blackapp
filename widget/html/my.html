@@ -220,18 +220,6 @@
           </div>
           <div class="set" onclick="Openset()"></div>
       </div>
-      <div class="nick">
-            <div class="nick_img">
-              <img src="../images/my/headerSculpture.png" >
-            </div>
-            <div class="nickname">昵称</div>
-            <span class="thisopp" onclick="openLogin()">马上登录</span>
-      </div>
-      <div class="footer">
-            <div>参与&nbsp;299<i></i></div>
-            <div>关注&nbsp;299<i></i></div>
-            <div>粉丝&nbsp;299</div>
-      </div>
   </div>
         <div class="item_content">
             <div class="phone">
@@ -482,16 +470,17 @@ function OpenmyAbount(){
    });
  }
  function OpenDeviceShare(){
-   var userdata = {};
-   userdata = $api.getStorage('userdata');
-   if(userdata){
-     api.openWin({
-         name: 'DeviceShare',
-         url: 'DeviceShare.html'
-     });
-   }else{
-       Toast('请登录之后再进行操作')
-   }
+  //  var userdata = {};
+  //  userdata = $api.getStorage('userdata');
+  //  if(userdata){
+  //    api.openWin({
+  //        name: 'DeviceShare',
+  //        url: 'DeviceShare.html'
+  //    });
+  //  }else{
+  //      Toast('请登录之后再进行操作')
+  //  }
+  Toast('改功能即将开放',1000)
  }
  function OpenSuggestionFeedback(){
      var userdata = {};

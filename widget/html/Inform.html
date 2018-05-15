@@ -20,7 +20,6 @@
         font-size: 22px;
         color: #20252b;
         padding: 5px;
-        position: relative;
       }
           body,html{
             width: 100%;height: 100%; margin: 0; padding: 0;
@@ -93,25 +92,24 @@
           }
 
           .inform ul li .time{
-            font-size: 11px;
+            font-size: 10px;
             color: #bebebe;
             float: right;
-            margin-top: -34px;
+            margin-top: -48px;
             margin-right: 18px;
             position: relative;
           }
-         .inform ul li  .num{
+          .inform ul li .time .num{
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             text-align: center;
             line-height: 16px;
             background-color: #d84a42;
-            top: 0;
+            bottom:-20px;
             right: 0;
             color: #fff;
-            /*display: none;*/
           }
           .inform ul li .title{
             height: 40%;
@@ -141,25 +139,25 @@
       <!-- ul菜单 -->
       <ul>
         <li>
-          <i class="iconfont" style="font-size:16px;" >&#xe630;<div class="num"></div></i>
+          <i class="iconfont" style="font-size:16px;" >&#xe630;</i>
           <!-- <span style="background:url('../images/inform/device_sharing.png') no-repeat"></span> -->
           <div class="main" style="margin-left:9px;">
             <div class="title">设备通知</div>
             <div class="text">kevin已接受共享的设备</div>
-            <div class="time">04-11 </div>
+            <div class="time">04-11 <div class="num">1</div></div>
           </div>
         </li>
         <li>
-            <i class="iconfont" >&#xe60a;<div class="num"></div></i>
+            <i class="iconfont" >&#xe60a;</i>
           <!-- <span style="background:url('../images/inform/artical_notefation.png') no-repeat"></span> -->
           <div id="messageinfo" class="main" onclick="openMessageNotification()">
             <div class="title">消息通知</div>
             <div class="text">收到新的点赞</div>
-            <div class="time">04-11 </div>
+            <div class="time">04-11 <div class="num">1</div></div>
           </div>
         </li>
         <li>
-            <i class="iconfont" >&#xe60d;<div class="num"></div></i>
+            <i class="iconfont" >&#xe60d;</i>
           <!-- <span style="background:url('../images/inform/community_notice.png') no-repeat"></span> -->
           <div id="systeminfo" class="main" onclick="openSystermNotification()">
             <div class="title">系统通知</div>

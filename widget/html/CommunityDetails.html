@@ -43,7 +43,6 @@
     }
     .header .uptop {
       margin: 8px 10px 12px 10px;
-      display: flex;
       align-items: center;
       position: relative;
       background-color: #f7f7f7;
@@ -53,21 +52,23 @@
       float: left;
     }
     .header .uptop .left {
+      margin-top: 10px;
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      margin: 0 6px 0 10px;
-      border-radius: 50%;
     }
     .header .uptop .left img {
-      width: 46px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
     }
     .header .uptop .mid {
+      margin-top: 10px;
       height: 48px;
       position: relative;
-      width: 100%;
-      margin-right: 60px;
+      width: 60%;
+      float: left;
+      left: 10px;
     }
     .header .uptop .mid .name{
       font-size: 16px;
@@ -223,7 +224,8 @@
       position: relative;
     }
     .main .text .left img {
-      width: 40px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
     }
     .main .text .right .top {
@@ -769,7 +771,7 @@
                 html+='</div>';
               }
             }else{
-                html+='<div class="replay" style="margin:30px auto;text-align:center;">暂无评论</div>';
+                html+='<div class="replay" style="margin:30px auto;text-align:center;border:0;">暂无评论</div>';
             }
           html+='</div>';
 
@@ -926,7 +928,9 @@
             $api.html($api.byId('likeimg'),"&#xe635;");
           }else if(type == "favorite"){
             Toast('收藏成功',1000);
-            $api.html($api.byId('favorite'),'<a href="javascript:;" id="favorite" onclick="faved(\'favorite\')"><i class="iconfont iconcollection">&#xe672;</i></a>');
+            $api.html($api.byId('favorite'),'<i class="iconfont iconcollection">&#xe672;</i>');
+            document.getElementById('favorite').removeAttribute('onclick');
+            document.getElementById('favorite').setAttribute('onclick','faved(\'favorite\')')
           }
         } else {
             // Toast(ret.msg,1000);
@@ -954,8 +958,9 @@
         }
     },function(ret, err){
         if (ret.status==1) {
-          favdata+='<a href="javascript:;" id="favorite" onclick="footerAll(\'favorite\')"><i class="iconfont iconcollection">&#xe6a7;</i></a>';
-          $api.html($api.byId('favorite'),favdata)
+          $api.html($api.byId('favorite'),'<i class="iconfont iconcollection">&#xe6a7;</i>')
+          document.getElementById('favorite').removeAttribute('onclick');
+          document.getElementById('favorite').setAttribute('onclick','footerAll(\'favorite\')')
           Toast('取消收藏成功',1000)
         } else {
             // Toast(ret.msg);
