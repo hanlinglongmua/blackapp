@@ -355,40 +355,46 @@
   }
   //拍视频
   function takeVideo(){
-    alert('录制视频时长最长为10s')
-    api.getPicture({
-        sourceType: 'camera',
-        mediaValue: 'video',
-        videoQuality:'low',
-        destinationType: 'url',
-        saveToPhotoAlbum: false
-    }, function(ret, err){
-        if(ret.duration>0){
-          if(ret.duration<=10){
-            api.ajax({
-                url: 'http://www.lxzntech.com/post.php?type=file',
-                method: 'post',
-                data: {
-                    files: {
-                        file: ret.data
-                    }
-                }
-            },function(ret, err){
-                if (ret.status) {
-                    var html='<video id="example_video_1" class="video-js vjs-default-skin" controls preload="" width="100%" height="100%" poster="../images/index/playimg.png" data-setup="{}"><source src="'+ret.file+'" type="video/mp4" /></video>';
-                    inputVideo(html);
-                } else {
-                    alert( JSON.stringify( err ) );
-                }
-            });
-            document.execCommand('insertparagraph');
-          }else{
-              alert('视频已超过10s，请重新录制');
-          }
-        }else{
-          return;
-        }
+    // alert('录制视频时长最长为10s')
+    // api.getPicture({
+    //     sourceType: 'camera',
+    //     mediaValue: 'video',
+    //     videoQuality:'low',
+    //     destinationType: 'url',
+    //     saveToPhotoAlbum: false
+    // }, function(ret, err){
+    //     if(ret.duration>0){
+    //       if(ret.duration<=10){
+    //         api.ajax({
+    //             url: 'http://www.lxzntech.com/post.php?type=file',
+    //             method: 'post',
+    //             data: {
+    //                 files: {
+    //                     file: ret.data
+    //                 }
+    //             }
+    //         },function(ret, err){
+    //             if (ret.status) {
+    //                 var html='<video id="example_video_1" class="video-js vjs-default-skin" controls preload="" width="100%" height="100%" poster="../images/index/playimg.png" data-setup="{}"><source src="'+ret.file+'" type="video/mp4" /></video>';
+    //                 inputVideo(html);
+    //             } else {
+    //                 alert( JSON.stringify( err ) );
+    //             }
+    //         });
+    //         document.execCommand('insertparagraph');
+    //       }else{
+    //           alert('视频已超过10s，请重新录制');
+    //       }
+    //     }else{
+    //       return;
+    //     }
+    // });
+    api.toast({
+        msg: '该功能请认证后再使用',
+        duration: 2000,
+        location: 'bottom'
     });
+
   }
   //录音
   function startTape(){
