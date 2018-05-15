@@ -6,28 +6,37 @@
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../css/api.css"/>
       <style>
-      body,html{
+      html,body{
+        height: 100%;
+        width: 100%;
+        background-color: #020b1c;
+      }
+      .bigbox{
           height: 100%;
           width: 100%;
-          background:url('../images/index/intro_three.png');
+          background:url('../images/index/intro_three.jpg')  no-repeat;
           -webkit-background-size: 100% 100%;
           background-size: 100% 100%;
       }
-      div{
-        height: 75px;
-        width: 195px;
+      .bigbox div{
+        height: 37px;
+        width: 94px;
         background:url('../images/index/loader.png');
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
         position: absolute;
         bottom:50px;
         left:50%;
-        margin-left: -97.5px;
+        margin-left: -47px;
       }
       </style>
   </head>
   <body>
+    <div class="bigbox">
       <div onclick="openIndex()">
 
       </div>
+    </div>
   </body>
   <script type="text/javascript" src="../script/api.js"></script>
   <script type="text/javascript">

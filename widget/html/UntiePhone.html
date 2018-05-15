@@ -187,11 +187,6 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
-// 限制input输入长度
-var input = document.querySelector("#phonenum")
-console.log(input.maxLength);
-var input = document.querySelector("#code")
-console.log(input.maxLength);
 
     apiready = function(){
 
@@ -273,7 +268,7 @@ console.log(input.maxLength);
               Toast( '绑定成功' );
               api.closeWin();
               api.sendEvent({
-                  name: 'ENDMy'
+                  name: 'mydata'
               });
           } else {
               Toast( ret.msg );

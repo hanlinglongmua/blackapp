@@ -72,6 +72,7 @@
           }
           header .headermain .namedatails .headerimg img{
             width: 100%;
+            height: 100%;
             border-radius: 50%;
           }
           header .headermain .namedatails .name{
@@ -337,7 +338,7 @@
         <header style="position:fixed;top:0;z-index:1;">
             <div class="headermenu">
                 <i onclick="api.closeWin()"></i>
-                <ul><li></li><li></li><li></li></ul>
+                <ul onclick="openShare()"><li></li><li></li><li></li></ul>
             </div>
             <div class="headermain" id="headermain">
                 <div class="namedatails">
@@ -594,6 +595,32 @@ apiready = function(){
   });
 
 }//
+
+  function openShare(){
+    api.openFrame({
+        name: 'ShareOther',
+        url: 'ShareOther.html',
+        rect: {
+            x: 0,
+            y: 0,
+            marginTop:415,
+            w: 'auto',
+            h: 'auto'
+        },
+        pageParam: {
+            name: 'test'
+        },
+        animation:{
+          type:"push",
+          subType:"from_bottom",
+          duration:300
+        },
+        bounces: false,
+        bgColor: 'rgba(0,0,0,0)',
+        vScrollBarEnabled: false,
+        hScrollBarEnabled: false
+    });
+  }
 
   function openChatWindow(uid){
     api.openWin({

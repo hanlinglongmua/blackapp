@@ -452,12 +452,14 @@
                         }
                         break;
                     case 4:
+                        // alert(num)
                         num--;
                         if(num<0){
-                          num = listpi.length;
+                          num = listpi.length-1;
                         }
                         for (var i = 0; i < ridusTolles.length; i++) {
                           ridusTolles[i].className='';
+
                         }
                         if(num==listpi.length){
                           $api.addCls(ridusTolles[0],'current')
@@ -521,6 +523,8 @@
           for(var j = 0;j<listpi.length;j++){
             listpi[j].style.width = winWdith+'px'
           }
+          var listpiLast =listpi[0].cloneNode(true);//克隆第一张图片
+          list.appendChild(listpiLast)
       });
     }
       var htmls = '';

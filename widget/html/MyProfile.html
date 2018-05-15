@@ -286,9 +286,9 @@
 
     }
 
+    var userdata = {};
+    userdata = $api.getStorage('userdata');
     function mydatas(){
-      var userdata = {};
-      userdata = $api.getStorage('userdata');
       var html = '';
       api.ajax({
           url: 'http://www.lxzntech.com/myCenter.php',
@@ -455,5 +455,20 @@
       });
 
     }
+
+    function openimg(ret) {
+        var src = ret.getAttribute("src");
+        var photoBrowser = api.require('photoBrowser');
+        photoBrowser.open({
+          images: [
+              src
+          ],
+        bgColor: '#000'
+        }, function(ret, err) {
+        if(ret.eventType=='click'){
+            photoBrowser.close();
+        }
+      });
+  }
 </script>
 </html>

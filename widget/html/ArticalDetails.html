@@ -33,6 +33,9 @@
     ul li {
       list-style-type: none;
     }
+    span {
+      display: inline;
+    }
    .comment_details {
      width: 100%;
      background-color: #f1f1f1;
@@ -59,9 +62,10 @@
    .header .nametime {
      padding-left: 12px;
      height: 20px;
-     display: flex;
      margin-bottom: 14px;
      align-items: center;
+     text-overflow: ellipsis;
+     display: -webkit-box;
   }
 
   .header .nametime .name {
@@ -95,6 +99,10 @@
    .header .nametime .readnum {
      color: #555;
      font-size: 12px;
+     line-height: 18px;
+     align-items: center;
+     text-overflow: ellipsis;
+     display: flex;
   }
    .header .bottom {
      margin: 0 10px 0 10px;
@@ -104,8 +112,12 @@
     .header .nametime .reasonfor{
       font-size: 12px;
       color: #555;
-      margin-left: 30px;
+      margin-left: 16px;
       align-items: center;
+      width: 30%;
+      display: flex;
+      overflow-y: hidden;
+      text-overflow: ellipsis;
 }
    /*资讯标签条结束*/
    /*视屏界面开始*/
@@ -276,7 +288,8 @@
     }
 
     .main .text .left img {
-      width: 40px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
     }
 
@@ -505,7 +518,7 @@
       right: 0;
     }
   /*上升标签开始*/
-  .toget {
+  .topget {
     height: 30px;
     width: 30px;
     position: fixed;
@@ -516,8 +529,8 @@
     transition: all 1s;
     display: none;
   }
-  .toget.active {
-    display: none;
+  .topget .active {
+    display: block;
   }
     /*footer结束*/
   /*textareaMain*/
@@ -579,14 +592,12 @@
 <body>
   <div class="comment_details">
     <div id="articalDetails">
-    <!-- header开始 -->
-    <div class="header">
-      <!-- 标题开始 -->
+      <!-- header开始 -->
+    <!-- <div class="header">
       <div class="title">
         <div class="titl">机器人“慧眼”巡逻速率是人工的21倍</div>
       </div>
-      <!-- 标题结束 -->
-      <!-- 资讯标签页开始 -->
+      <div class="nametime">
       <div class="nametime">
         <div class="name">最最新咨讯
           <div></div>
@@ -596,10 +607,10 @@
         </div>
         <div class="readnum">浏览数:123</div>
         <div class="reasonfor">来源：网络</div>
-      </div>
+      </div> -->
       <!-- 资讯标签页结束 -->
       <!-- 视频界面开始 -->
-      <div class="photoprojector">
+      <!-- <div class="photoprojector">
         <img class="video" src="../images/discovery/article_image2.png" alt="">
       </div>
       <div class="artbook">
@@ -610,10 +621,10 @@
       </div>
       <div class="artbook">
         <p>蛋白质受热会凝固,蛋白质受热会凝固,蛋白质受热会凝固</p>
-      </div>
+      </div> -->
       <!-- 视频界面结束 -->
       <!-- 最最新咨讯界面开始 -->
-      <div class="uptop">
+      <!-- <div class="uptop">
         <div class="left">
           <img src="../images/community_comment_details/commDetails1.png" alt="">
         </div>
@@ -624,12 +635,12 @@
         <div class="right">
           <img src="../images/same_content/attention.png" alt="">
         </div>
-      </div>
+      </div> -->
       <!-- 最最新咨讯界面结束 -->
-    </div>
+    <!-- </div> -->
     <!-- header end -->
     <!-- 相关推荐开始 -->  <!-- new开始 -->
-    <div class="news">
+    <!-- <div class="news">
       <h3>相关推荐</h3>
       <ul>
         <li>
@@ -655,26 +666,21 @@
           </a>
         </li>
       </ul>
-    </div>
+    </div> -->
     <!-- 相关推荐结束 --><!-- new结束 -->
     <!-- main开始 -->
-    <div class="main">
-      <!-- 评论区开始 -->
+    <!-- <div class="main">
       <div class="mue">
         <div class="left">评论</div>
       </div>
-      <!-- 评论区结束 -->
       <div class="replay">
         <div class="text">
-      <!-- 评论头像开始 -->
           <div class="left">
             <img src="../images/same_content/fly.png" alt="">
           </div>
-        <!-- 评论头像结束-->
           <div class="right">
             <div class="top">afbgn</div>
             <i></i>
-            <!-- 回复区开始 -->
             <div class="mid">
               <div class="art">如果你无法简洁的表达你打想法，那只说明你还不够了解它。阿尔伯特·爱因斯坦</div>
               <div class="answer">
@@ -692,7 +698,6 @@
                 </div>
               </div>
             </div>
-            <!-- 回复区结束 -->
           </div>
         </div>
         <div class="foot">
@@ -730,7 +735,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- main end -->
 
     <!-- footer -->
@@ -785,15 +790,14 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
-
-var return_top = document.querySelector("#topget")
+var return_top = document.getElementById('topget')
 var sTop;
 window.onscroll = function () { //sTop :滚动条距离顶部的距离数值 sTop
   sTop = document.body.scrollTop || document.documentElement.scrollTop;
-  if (sTop > 200) {
-    return_top.className = "toget active";
+  if (sTop > 300) {
+    $api.addCls(return_top, 'topget active');
   } else {
-    return_top.className = "toget";
+    $api.addCls(return_top, 'topget');
   }
 }
 return_top.onclick = function (){
@@ -817,8 +821,17 @@ return_top.onclick = function (){
   userdata = $api.getStorage('userdata');
   var data = {};
 
-  apiready=function(){
+  apiready = function(){
     ArticalDetailsData();
+
+    // api.addEventListener({
+    //     name:'scrolltobottom',
+    //     extra:{
+    //        threshold:0
+    //     }
+    //  },function(ret, err){
+    //        alert('已滚动到底部');
+    //  });
   }
 
   function ArticalDetailsData(){
@@ -926,7 +939,7 @@ return_top.onclick = function (){
                         html+='</div>';
                       }else{
                         html+='<div class="main" style="text-align:center;padding-bottom:44px;" onclick="toggleFooter();">';
-                          html+='<div class="mue"><div class="left">暂无评论</div></div>';
+                          html+='<div class="mue"><div class="left" style="border:0;">暂无评论</div></div>';
                         html+='</div>';
                       }
 
@@ -936,7 +949,6 @@ return_top.onclick = function (){
                         html+='<div class="li"><input type="text" name="" id="talk" placeholder="写评论..." onclick="inputFouse(\'\');"></div>';
                         html+='<div class="li">';
                           html+='<a href="javascript:;"><i class="iconfont icontalk" onclick="toTalk()">&#xe75b;</i><div class="talknum">'+data['commentnum']+'</div></a>';//评论次数
-                          // alert(data['haveLike'])
                           if(data['haveLike']== 1){
                             html+='<a href="javascript:;" onclick="likeData('+pageParamAid+',\'aid\')" id="likeicom"><i class="iconfont iconlike">&#xe635;</i><div class="likenum">'+data['likeNum']+'</div></a>';//点赞次数
                           }else {
@@ -1173,8 +1185,9 @@ return_top.onclick = function (){
         }
     },function(ret, err){
         if (ret.status==1) {
-          favdata+='<a href="javascript:;" onclick="collectioned()" id="favicom"><i class="iconfont iconcollection">&#xe672;</i></a>';
-          $api.html($api.byId('favicom'),favdata)
+          $api.html($api.byId('favicom'),'<i class="iconfont iconcollection">&#xe672;</i>')
+          document.getElementById('favicom').removeAttribute('onclick');
+          document.getElementById('favicom').setAttribute('onclick','collectioned()')
           Toast('收藏成功',1000)
         } else {
             // Toast(ret.msg);
@@ -1204,8 +1217,9 @@ return_top.onclick = function (){
         }
     },function(ret, err){
         if (ret.status==1) {
-          favdata+='<a href="javascript:;" onclick="footerAll()" id="favicom"><i class="iconfont iconcollection">&#xe6a7;</i></a>';
-          $api.html($api.byId('favicom'),favdata)
+          $api.html($api.byId('favicom'),'<i class="iconfont iconcollection">&#xe6a7;</i>')
+          document.getElementById('favicom').removeAttribute('onclick');
+          document.getElementById('favicom').setAttribute('onclick','footerAll()')
           Toast('取消收藏成功',1000)
         } else {
             // Toast(ret.msg);
