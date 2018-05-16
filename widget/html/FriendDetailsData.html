@@ -725,6 +725,7 @@ function Toast(msg,duration){
 //打开一张图片
   function openimg(ret) {
       var src = ret.getAttribute("src");
+      src = src.replace(/small/, "big");
       //图片加载
       var photoBrowser = api.require('photoBrowser');
       photoBrowser.open({
