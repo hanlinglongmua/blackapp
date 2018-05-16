@@ -657,6 +657,7 @@
       }
       //返回热门搜索和搜索历史
       function cancelbtn(){
+        $api.val($api.byId('searchInput'), '');
         var history = document.getElementById('history');
         var historys = '';
         historys = $api.getStorage('historys');

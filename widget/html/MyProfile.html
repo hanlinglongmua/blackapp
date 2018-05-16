@@ -304,7 +304,7 @@
               var data = ret.data;
               html+='<div class="phone">';
                 html+='<a class="nicksculpture" href="javascript:;" onclick="openChangeHeaderImg('+userdata['uid']+')">';
-                  html+='<div id="headerimg"><span class="title">头像<span class="sculpture" id="sculpture"><img src="'+data['avatar']+'"></span></span></div>';
+                  html+='<div id="headerimg"><span class="title">头像<span class="sculpture" id="sculpture"><img src="'+data['avatar']+'" onclick=openimg(this)></span></span></div>';
                   html+='<span class="arrow"></span>';
                 html+='</a>';
               html+='</div>';
@@ -465,6 +465,22 @@
           ],
         bgColor: '#000'
         }, function(ret, err) {
+        if(ret.eventType=='click'){
+            photoBrowser.close();
+        }
+      });
+  }
+  //打开一张图片
+    function openimg(ret) {
+        var src = ret.getAttribute("src");
+        //图片加载
+        var photoBrowser = api.require('photoBrowser');
+        photoBrowser.open({
+          images: [
+              src
+          ],
+        bgColor: '#000'
+    }, function(ret, err) {
         if(ret.eventType=='click'){
             photoBrowser.close();
         }

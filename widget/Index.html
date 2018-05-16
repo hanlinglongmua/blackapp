@@ -280,7 +280,9 @@
 </body>
 <script type="text/javascript" src="script/api.js"></script>
 <script type="text/javascript">
+    var userdata = {};
     apiready = function() {
+        userdata = $api.getStorage('userdata');
         //状态栏颜色
         api.setStatusBarStyle({
             style: 'light',
@@ -408,21 +410,16 @@
 
     //打开zhineng页面
     function clickRandomSwiBtn2() {
-        // api.openFrame({
-        //     name: 'SmartLife',
-        //     url: 'html/SmartLife.html',
-        //     rect: {
-        //         marginTop: 0,
-        //         marginBottom: footerH,
-        //         w: 'auto',
-        //         h: 'auto'
-        //     },
-        //     bounces: false
-        // });
-        api.toast({
-            msg: '该功能暂未开放',
-            duration: 2000,
-            location: 'bottom'
+        api.openFrame({
+            name: 'SmartLife',
+            url: 'html/SmartLife.html',
+            rect: {
+                marginTop: 0,
+                marginBottom: footerH,
+                w: 'auto',
+                h: 'auto'
+            },
+            bounces: false
         });
 
         $api.html($api.dom(".footerBg.two"),'&#xe615;')
@@ -457,14 +454,22 @@
     var num = 0;
 
     function openFindChoice(){
-
-      api.openWin({
-          name: 'ReleaseImageText',
-          url: 'html/ReleaseImageText.html',
-          pageParam: {
-              name: 'test'
-          }
-      });
+      if(userdata){
+        api.openWin({
+            name: 'ReleaseImageText',
+            url: 'html/ReleaseImageText.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }else {
+        api.toast({
+            msg: '请登录后再进行操作',
+            duration: 1000,
+            location: 'bottom'
+        });
+        return;
+      }
     }
 </script>
 
