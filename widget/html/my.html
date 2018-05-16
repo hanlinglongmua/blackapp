@@ -254,7 +254,7 @@
                     </div>
                     <span class="arrow"></span>
                 </a>
-                <a href="javascript:;" style="padding:15px;">
+                <a href="javascript:;" onclick="OpenOrder()"  style="padding:15px;">
                   <i class="iconfonta" style="font-size:17px;">&#xe641;</i>
                     <div>
                         <span class="title" style="margin-left:1px;">我的订单</span>
@@ -482,6 +482,10 @@ function OpenmyAbount(){
   //  }
   Toast('该功能即将开放',1000)
  }
+ function OpenOrder(){
+  Toast('该功能即将开放',1000)
+ }
+
  function OpenSuggestionFeedback(){
      var userdata = {};
      userdata = $api.getStorage('userdata');
