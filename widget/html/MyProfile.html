@@ -458,6 +458,7 @@
 
     function openimg(ret) {
         var src = ret.getAttribute("src");
+        src = src.replace(/small/, "big");
         var photoBrowser = api.require('photoBrowser');
         photoBrowser.open({
           images: [
@@ -465,22 +466,6 @@
           ],
         bgColor: '#000'
         }, function(ret, err) {
-        if(ret.eventType=='click'){
-            photoBrowser.close();
-        }
-      });
-  }
-  //打开一张图片
-    function openimg(ret) {
-        var src = ret.getAttribute("src");
-        //图片加载
-        var photoBrowser = api.require('photoBrowser');
-        photoBrowser.open({
-          images: [
-              src
-          ],
-        bgColor: '#000'
-    }, function(ret, err) {
         if(ret.eventType=='click'){
             photoBrowser.close();
         }
