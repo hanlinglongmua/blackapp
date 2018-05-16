@@ -458,17 +458,15 @@
 
     function openimg(ret) {
         var src = ret.getAttribute("src");
-        src = src.replace(/small/, "big");
         var photoBrowser = api.require('photoBrowser');
         photoBrowser.open({
-          images: [
-              src
-          ],
+          images: [src],
         bgColor: '#000'
         }, function(ret, err) {
-        if(ret.eventType=='click'){
-            photoBrowser.close();
-        }
+          api.clearCache();
+          if(ret.eventType=='click'){
+              photoBrowser.close();
+          }
       });
   }
 </script>
