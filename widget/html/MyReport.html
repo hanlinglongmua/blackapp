@@ -36,6 +36,15 @@
             line-height: 86px;
             text-align: center;
           }
+          .collection .top .right{
+            font-size: 14px;
+            color: #fff;
+            line-height: 86px;
+            text-align: right;
+          }
+          .collection .top .right .edit{
+            margin-right: 10px;
+          }
           .collection .top .left>i{
             position: absolute;
             left: 15px;
@@ -83,6 +92,11 @@
             height: 100%;
             padding: 0 6px 0 6px;
             position: relative;
+          }
+          .main .article input{
+            width: 60px;
+            color: red;
+            display: none;
           }
           .main .article .title
           {
@@ -165,7 +179,30 @@
             right: 0;
           }
           /*有视频的文章end*/
-
+          footer{
+            position: fixed;
+            bottom: 0;
+            height: 44px;
+            width: 100%;
+            background-color: #fff;
+            display: none;
+          }
+          footer div{
+            float: left;
+            line-height: 44px;
+            width: 50%;
+            text-align: center;
+          }
+          footer .allCheck{
+            position: relative;
+          }
+          footer span{
+            position: absolute;
+            right: 0;
+            top: 11px;
+            border-right: 1px solid #f1f1f1;
+            height: 22px;
+          }
 
       </style>
   </head>
@@ -176,7 +213,9 @@
         <div class="top">
           <div class="sect left"><i onclick="api.closeWin()"></i></div>
           <div class="sect fo">我的发表</div>
-          <div class="sect right"><div class="t">保存</div></div>
+
+          <div class="sect right"><div class="edit" id="edit" onclick="delReport()">编辑</div></div>
+
         </div>
       </div>
       <!-- top end -->
@@ -193,6 +232,7 @@
                     <div class="read">2018阅读</div>
                 </div>
               </div>
+              <input type="checkbox" name="" value="">
           </div>
 
           <div class="article">
@@ -247,55 +287,145 @@
 
       </div>
       <!-- main 内容页面 end -->
-
+      <footer id="footer">
+        <div class="allCheck" id="checkbo" onclick="allCheck()">全选<span></span></div>
+        <div class="delbtn" onclick="delCheckBox()">删除</div>
+      </footer>
     </div>
   </body>
   <script type="text/javascript" src="../script/api.js"></script>
   <script type="text/javascript">
       var userdata = {};
       userdata = $api.getStorage('userdata');
-      apiready = function(){
-          var html = '';
-          api.ajax({
-              url: 'http://www.lxzntech.com/myCenter.php',
-              method: 'post',
-              data: {
-                  values: {
-                      uid: userdata['uid']
+      //删除
+      function delCheckBox() {
+        api.confirm({
+            title: '重要提示',
+            msg: '确定删除吗',
+            buttons: ['确定', '取消']
+        }, function(ret, err){
+            if( ret.buttonIndex == 1){
+              var delName = document.getElementsByName('del[]');
+              var arr = new Array();
+              for(var j = 0;j<delName.length;j++){
+                  if(delName[j].checked){
+                    arr = arr+','+$api.val(delName[j]);
                   }
               }
-          },function(ret, err){
-              if (ret.status == 1) {
-                  var data = ret.data['sentData'];
-                    for(var i=0;i<data.length;i++){
-                      if(data[i]['idtype'] == 'aid'){
-                        html+='<div class="article" onclick="openArticalDetails('+data[i]['id']+')">';
-                          html+='<div class="image"><img src="http://www.lxzntech.com/data/attachment/'+data[i]['pic']+'" alt=""></div>';
-                          html+='<div class="text">';
-                            html+='<div class="title t">'+data[i]['title']+'</div>';
-                            html+='<div class="foot t">';
-                              html+='<div class="date">'+data[i]['dateline']+'</div>';
-                              html+='<div class="read">'+data[i]['views']+'&nbsp;阅读</div>';
-                            html+='</div>';
-                          html+='</div>';
-                        html+='</div>';
-                      }else if (data[i]['idtype'] == 'tid') {
-                        html+='<div class="article" onclick="openCommunityDetails('+data[i]['id']+')">';
-                          html+='<div class="text">';
-                            html+='<div class="title t">'+data[i]['title']+'</div>';
-                            html+='<div class="foot t">';
-                              html+='<div class="date">'+data[i]['dateline']+'</div>';
-                              html+='<div class="read">'+data[i]['views']+'阅读</div>';
-                            html+='</div>';
-                          html+='</div>';
-                        html+='</div>';
+              api.ajax({
+                  url: 'http://www.lxzntech.com/deletePost.php',
+                  method: 'post',
+                  data: {
+                      values: {
+                          uid: userdata['uid'],tid:arr
                       }
+                  }
+              },function(ret, err){
+                  if(ret.status == 1){
+                    api.toast({
+                        msg: '删除成功',
+                        duration: 1000,
+                        location: 'middle'
+                    });
+                    myReport();
+                    delReport();
+                  }else {
+                    api.toast({
+                        msg: '删除失败',
+                        duration: 1000,
+                        location: 'middle'
+                    });
+                  }
+              });
+            }else{
+                return;
+            }
+        });
+      }
+
+      //编辑
+      function delReport(){
+        var footer = document.getElementById('footer');
+        var editbtn = document.getElementsByClassName('del');
+        for(var i = 0;i<editbtn.length;i++){
+            if(editbtn[i].style.display === 'none'){
+              editbtn[i].style.display = 'block';
+              $api.text($api.byId('edit'), '取消');
+              footer.style.display = 'block';
+            }else{
+              editbtn[i].style.display = 'none';
+              $api.text($api.byId('edit'), '编辑');
+              footer.style.display = 'none';
+            }
+        }
+      }
+
+      //全选
+      function allCheck(){
+        var delcheck = document.getElementsByName('del[]');
+        for(var i=0;i<delcheck.length;i++){
+            delcheck[i].checked=true;
+        }
+        document.getElementById('checkbo').removeAttribute('onclick');
+        document.getElementById('checkbo').setAttribute('onclick','allNot()')
+      }
+      function allNot(){
+        var delcheck = document.getElementsByName('del[]');
+        for(var i=0;i<delcheck.length;i++){
+            delcheck[i].checked=false;
+        }
+        document.getElementById('checkbo').removeAttribute('onclick');
+        document.getElementById('checkbo').setAttribute('onclick','allCheck()')
+      }
+
+      apiready = function(){
+          myReport();
+      }
+
+      function myReport(){
+        var html = '';
+        api.ajax({
+            url: 'http://www.lxzntech.com/myCenter.php',
+            method: 'post',
+            data: {
+                values: {
+                    uid: userdata['uid']
+                }
+            }
+        },function(ret, err){
+            if (ret.status == 1) {
+                var data = ret.data['sentData'];
+                  for(var i=0;i<data.length;i++){
+                    if(data[i]['idtype'] == 'aid'){
+                      html+='<div class="article">';
+                        html+='<div class="image" onclick="openArticalDetails('+data[i]['id']+')"><img src="http://www.lxzntech.com/data/attachment/'+data[i]['pic']+'" alt=""></div>';
+                        html+='<div class="text" onclick="openArticalDetails('+data[i]['id']+')">';
+                          html+='<div class="title t">'+data[i]['title']+'</div>';
+                          html+='<div class="foot t">';
+                            html+='<div class="date">'+data[i]['dateline']+'</div>';
+                            html+='<div class="read">'+data[i]['views']+'&nbsp;阅读</div>';
+                          html+='</div>';
+                        html+='</div>';
+                        html+='<input style="display:none;" type="checkbox" name="del" value="">';
+                      html+='</div>';
+                    }else if (data[i]['idtype'] == 'tid') {
+                      html+='<div class="article">';
+                        html+='<div class="text" onclick="openCommunityDetails('+data[i]['id']+')">';
+                          html+='<div class="title t">'+data[i]['title']+'</div>';
+                          html+='<div class="foot t">';
+                            html+='<div class="date">'+data[i]['dateline']+'</div>';
+                            html+='<div class="read">'+data[i]['views']+'阅读</div>';
+                          html+='</div>';
+                        html+='</div>';
+                        html+='<input style="display:none;" class="del" type="checkbox" name="del[]" value="'+data[i]['id']+'">';
+                      html+='</div>';
                     }
-              } else {
-                  Toast( JSON.stringify( err ) );
-              }
-              $api.html($api.byId('main'), html);
-          });
+                  }
+            } else {
+                Toast( JSON.stringify( err ) );
+            }
+            $api.html($api.byId('main'), html);
+        });
 
       }
 

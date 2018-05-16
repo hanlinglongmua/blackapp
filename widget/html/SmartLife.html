@@ -159,12 +159,18 @@
 
     };
     function openChooseDevicetype(){
-      api.openWin({
-          name: 'ChooseDevicetype',
-          url: 'gateway/ChooseDevicetype.html',
-          pageParam: {
-              name: 'test'
-          }
+      // api.openWin({
+      //     name: 'ChooseDevicetype',
+      //     url: 'gateway/ChooseDevicetype.html',
+      //     pageParam: {
+      //         name: 'test'
+      //     }
+      // });
+
+      api.toast({
+          msg: '该功能即将开放',
+          duration: 1000,
+          location: 'bottom'
       });
 
     }

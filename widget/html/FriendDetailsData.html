@@ -533,7 +533,7 @@ apiready = function(){
       if (ret.status==1) {
           data = ret.data;
           html+='<div class="namedatails">';
-            html+='<div class="headerimg"><img src="'+data['avatar']+'" alt=""></div>';//发帖人头像
+            html+='<div class="headerimg"><img src="'+data['avatar']+'" alt="" onclick="openimg(this)"></div>';//发帖人头像
             html+='<div class="name"><span>'+data['username']+'</span></div>';//资讯发布人名称
             if(data['author']){
               html+='<div class="sign"><span>'+data['author']+'</span></div>';//签名
@@ -723,6 +723,22 @@ function Toast(msg,duration){
         m.style.opacity = '0';
         setTimeout(function() { document.body.removeChild(m) }, d * 1000);
     }, duration);
+}
+//打开一张图片
+  function openimg(ret) {
+      var src = ret.getAttribute("src");
+      //图片加载
+      var photoBrowser = api.require('photoBrowser');
+      photoBrowser.open({
+        images: [
+            src
+        ],
+      bgColor: '#000'
+  }, function(ret, err) {
+      if(ret.eventType=='click'){
+          photoBrowser.close();
+      }
+    });
 }
   </script>
   </html>
